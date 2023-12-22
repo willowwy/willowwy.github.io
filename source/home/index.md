@@ -2,6 +2,7 @@
 title: 关于我！
 date: 2023-07-26 10:43:43
 type: "about"
+permalink: index.html
 comments: false
 ---
 

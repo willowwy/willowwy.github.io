@@ -9,17 +9,16 @@ nav:
 
 # Menu 目錄
 menu:
-  首页: / || fas fa-home
+  Home: / || fas fa-home
   # 归档: /archives/ || fas fa-archive
-  标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
-  链接: /link/ || fas fa-link
-  图库: /gallery/ || fas fa-images
-  留言板: /guestbook/ || fas fa-comment
-  关于: /about/ || fas fa-heart
+  # 标签: /tags/ || fas fa-tags
+  #: /categories/ || fas fa-folder-open
+  Note: /categories/ || fas fa-book
+  # Link: /link/ || fas fa-link
+  Resume: /resume/ || fas fa-id-card
+  Gallery: /gallery/ || fas fa-images
+  Comment: /guestbook/ || fas fa-comment
+  # About: /about/ || fas fa-heart
   
 
 # Code Blocks (代碼相關)
@@ -52,7 +51,7 @@ avatar:
   effect: false
 
 # Disable all banner image
-disable_top_img: false
+disable_top_img: true
 
 
 # The banner image of home page
