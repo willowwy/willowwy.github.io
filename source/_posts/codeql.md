@@ -1,8 +1,8 @@
 ---
 title: CodeQL安装与使用
 date: 2023-07-27 16:36:52
-tags: [codeql]
-categories: [tool]
+tags: [Codeql]
+categories: [Tools]
 description: CodeQL安装与使用
 cover: images/codeql.png
 comments: false

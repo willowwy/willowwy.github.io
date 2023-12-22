@@ -2,7 +2,7 @@
 title: 可抓包wireshark安装Linux
 date: 2023-07-31 17:24:51
 tags: [wireshark]
-categories: [tool]
+categories: [Tools]
 description: 可抓包wireshark安装
 cover: images/wireshark.jpg
 comments: false

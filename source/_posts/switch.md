@@ -2,7 +2,7 @@
 title: switch
 date: 2023-08-03 09:46:23
 tags: [switch]
-categories: [switch]
+categories: [Switch]
 description: 华为eNSP交换机简单配置与操作
 cover: images/switch.png
 comments: false
