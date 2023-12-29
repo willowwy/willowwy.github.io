@@ -239,7 +239,7 @@ aside:
       link: 
   card_announcement:
     enable: true
-    content: Currently applying for a Master's in Computer Science. Open for discussions and connections!
+    content: "Currently applying for a Master's in Computer Science."
   card_recent_post:
     enable: false
     limit: 5 # if set 0 will show all
