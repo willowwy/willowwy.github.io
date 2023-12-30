@@ -1490,7 +1490,7 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: #004643;
+  background: #aa7880;
   color: #f7f7f7;
 }
 button {
@@ -3866,7 +3866,7 @@ h1.page-title + .tag-cloud-list {
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #c3f0ca;
+  color: #aa7880;
 }
 #article-container a:hover {
   text-decoration: underline;
