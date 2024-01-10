@@ -28,7 +28,7 @@ comments: false
 ### Hello! I'm a senior student from Huazhong University of Science and Technology.
 
 **<div class="icon"><i class="fa fa-graduation-cap"></i></div><span class="icon-text"> Bachelor of Engineering in Cyberspace Security</span>**
-**<div class="icon"><i class="fa-solid fa-heart"></i></div><span class="icon-text"> Natural Language Processing | Machine Learning | Static Analysis</span>**
+**<div class="icon"><i class="fa-solid fa-heart"></i></div><span class="icon-text"> Machine Learning | Natural Language Processing | Static Analysis </span>**
 
 I am currently working on the research of large language model and malicious package detection. My work involves developing a system that transforms vectors into serialized formats, employing deep learning techniques for enhanced detection accuracy.
 {% endnote %}
@@ -39,7 +39,7 @@ I am currently working on the research of large language model and malicious pac
 
 ### Bachlor of Engineering in Cyberspace Security
 
-<i class="fa-solid fa-location-dot"></i> Wuhan, China | 2018.9 - Present
+<i class="fa-solid fa-location-dot"></i> Wuhan, China | 2020.9 - Present
 {% endnote %}
 
 ## Research Experience
@@ -48,7 +48,7 @@ I am currently working on the research of large language model and malicious pac
 
 ### MalPacDetector: An LLM-based Malicious npm Package Detector
 
-<i class="fa-solid fa-chalkboard-user"></i> **Advisor** : **<a href="http://faculty.hust.edu.cn/lizhen12/en/index.htm" target="_blank"><span style="color: #004643;">Zhen Li</a>** | **March 2023 - Present**
+<i class="fa-solid fa-chalkboard-user"></i> **Advisor** : **<a href="http://faculty.hust.edu.cn/lizhen12/en/index.htm" target="_blank">Zhen Li</a>** | **March 2023 - Present**
 An innovative, Large Language Model- or LLM-based Malicious npm Package Detector (MalPacDetector).
 _Malicious package detection, npm, malicious features, large language model_
 {% endnote %}
@@ -57,7 +57,7 @@ _Malicious package detection, npm, malicious features, large language model_
 
 ### Reducing False Negatives and False Positives in Static Program Analysis
 
-<i class="fa-solid fa-chalkboard-user"></i> **Advisor** : **<a href="http://faculty.hust.edu.cn/lizhen12/en/index.htm" target="_blank"><span style="color: #004643;">Zhen Li</a>** | **February 2022 - March 2023**
+<i class="fa-solid fa-chalkboard-user"></i> **Advisor** : **<a href="http://faculty.hust.edu.cn/lizhen12/en/index.htm" target="_blank">Zhen Li</a>** | **February 2022 - March 2023**
 A prototype system for static analysis, aimed at identifying and addressing false positives and false negatives.
 _Static analysis, vulnerability detection, code transformation_
 {% endnote %}
@@ -66,7 +66,7 @@ _Static analysis, vulnerability detection, code transformation_
 
 {% note modern %}
 
-### Test Intern - <a href="https://www.dptech.com/html/es/"  target="_blank"><span style="color: #004643;">Dptech</a>
+### Test Intern - <a href="https://www.dptech.com/html/es/"  target="_blank">Dptech</a>
 
 <i class="fa-solid fa-location-dot"></i> **Hangzhou, China** | **July 2023 - September 2023**
 DBeaver, Apache JMeter, Apache Kafka, Wireshark, Python, Shell scripting, Node.js, Situation Awareness, Automated Testing, Issue Tracking
@@ -74,7 +74,7 @@ DBeaver, Apache JMeter, Apache Kafka, Wireshark, Python, Shell scripting, Node.j
 
 {% note modern %}
 
-### Operations and Maintenance Intern - <a href="https://www.chd.com.cn/"  target="_blank"><span style="color: #004643;">Hubei Huadian Xiangyang Power Generation Co., Ltd</a>
+### Operations and Maintenance Intern - <a href="https://www.chd.com.cn/"  target="_blank">Hubei Huadian Xiangyang Power Generation Co., Ltd</a>
 
 <i class="fa-solid fa-location-dot"></i> **Xiangyang, China** | **July 2022 - August 2022**
 PC Maintenance, Oracle and SQL Server Database Management, Network Configuration, Router and Switch Operation, Firewall Management, Hands-on Hardware Configuration, Protection Level Assessment

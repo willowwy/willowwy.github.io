@@ -38,7 +38,7 @@ social:
   fab fa-github: https://github.com/willowwy || Github || '#1e3050'
   fas fa-envelope: mailto:willowwy.hhh@gmail.com || Email || '#1e3050'
   fas fa-location-arrow: https://www.google.com/maps/place/%E5%9B%BD%E5%AE%B6%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%8E%E4%BA%BA%E6%89%8D%E5%88%9B%E6%96%B0%E5%9F%BA%E5%9C%B0/@30.6758128,114.1331467,17z/data=!3m1!4b1!4m6!3m5!1s0x342954d013f4320d:0x5dd14fb38ccf3f73!8m2!3d30.6758128!4d114.1331467!16s%2Fg%2F11q49lx82s?entry=ttu || Location || '#1e3050'
-  fa-brands fa-weibo: https://weibo.com/u/5209273688 || Weibo || '#1e3050'
+  fa-brands fa-square-x-twitter: https://twitter.com/WillowWang82466 || Twitter || '#1e3050'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -617,8 +617,8 @@ theme_color:
   main: "#f4acb7" #主題顔色
   paginator: "#f4acb7" #分页器顔色
   button_hover: "#d8e2dc" #点击后按钮颜色
-  text_selection: "#004643" #文字选中颜色
-  link_color:  "#c3f0ca" #链接颜色
+  text_selection: "#aa7880" #文字选中颜色
+  link_color:  "#aa7880" #链接颜色
   meta_color: "#594a4e" #文章概要栏顔色
   hr_color: "#000000" # 分隔线顔色
   code_foreground: "#000000" # 引用块文字颜色
