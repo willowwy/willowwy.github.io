@@ -16,7 +16,7 @@ menu:
   Note: /categories/ || fas fa-book
   # Link: /link/ || fas fa-link
   Resume: /resume/ || fas fa-id-card
-  Gallery: /gallery/ || fas fa-images
+  # Gallery: /gallery/ || fas fa-images
   Comment: /guestbook/ || fas fa-comment
   # About: /about/ || fas fa-heart
   
@@ -36,9 +36,9 @@ code_word_wrap: false
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/willowwy || Github || '#1e3050'
-  fas fa-envelope: mailto:willowwy.hhh@gmail.com || Email || '#1e3050'
-  fas fa-location-arrow: https://www.google.com/maps/place/%E5%9B%BD%E5%AE%B6%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%8E%E4%BA%BA%E6%89%8D%E5%88%9B%E6%96%B0%E5%9F%BA%E5%9C%B0/@30.6758128,114.1331467,17z/data=!3m1!4b1!4m6!3m5!1s0x342954d013f4320d:0x5dd14fb38ccf3f73!8m2!3d30.6758128!4d114.1331467!16s%2Fg%2F11q49lx82s?entry=ttu || Location || '#1e3050'
-  fa-brands fa-square-x-twitter: https://twitter.com/WillowWang82466 || Twitter || '#1e3050'
+  fas fa-envelope: mailto:wenyunw@andrew.cmu.edu || Email || '#1e3050'
+  fas fa-location-arrow: https://www.google.com/maps/place/The+Information+Networking+Institute/@40.4460669,-79.9486752,19z/data=!3m1!4b1!4m6!3m5!1s0x8834f2246db2baff:0x85b7d021fa341b37!8m2!3d40.4460659!4d-79.9480315!16s%2Fm%2F03nrl47?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D || Location || '#1e3050'
+  fab fa-linkedin: https://www.linkedin.com/in/wenyunw/ || Linkedin || '#1e3050'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -239,7 +239,7 @@ aside:
       link: 
   card_announcement:
     enable: true
-    content: "Currently applying for a Master's in Computer Science."
+    content: "I'm seeking an internship now."
   card_recent_post:
     enable: false
     limit: 5 # if set 0 will show all
@@ -462,7 +462,7 @@ valine:
 # waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
 waline:
-  serverURL: comment.willowwy.me # Waline server address url
+  serverURL: comment.wenyunw.me # Waline server address url
   bg: # waline background
   pageview: false
   option:
@@ -736,9 +736,9 @@ beautify:
 # Global font settings
 # Don't modify the following settings unless you know how they work (非必要不要修改)
 font:
-  global-font-size:
-  code-font-size:
-  font-family:
+  global-font-size: 
+  code-font-size: 
+  font-family: -apple-system
   code-font-family:
 
 # Font settings for the site title and site subtitle
