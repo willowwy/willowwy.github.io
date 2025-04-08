@@ -25,10 +25,10 @@ comments: false
 
 {% note modern %}
 
-### Hi!!! A student studying in Carnegie Mellon University.
+### Hi, I'm a student currently :)
 ### Interested in how to make software more secure!
 
-**<div class="icon"><i class="fa fa-graduation-cap"></i></div><span class="icon-text"> Master of Science in Information Technology-Information Security</span>**
+
 **<div class="icon"><i class="fa-solid fa-heart"></i></div><span class="icon-text"> Software Engineering | Software Security | Cyber Security | Machine Learning </span>**
 
 {% endnote %}
@@ -56,15 +56,15 @@ comments: false
 
 ### **Languages:**
 
-**C/C++, Python, Shell, TypeScript, JavaScript, HTML/CSS, Assembly**
+**Golang, Python, C, Shell, TypeScript, JavaScript, HTML/CSS, Assembly**
 
 ### **Developer Tools:**
 
-**Tools: VS Code, Visual Studio, Wireshark, Pip, npm, IDA, JMeter, DBeaver, Burp Suite, Metasploit,Checkmarx**
+**Git, Django, AJAX, React, MongoDb, Node.js, Docker, JMeter, DBeaver, MySQL, Kafka, Wireshark, IDA, JMeter, DBeaver, Burp Suite, Metasploit,Checkmarx**
 
 ### **Technologies:**
 
-**Linux, Git, Docker, Network Programming, Machine Learning, Scripting/Automation, Static Program Analysis, Reverse Engineering, Forensics, Vulnerability Detection**
+**Linux, Machine Learning, Scripting/Automation, Socket Programming, Multi-threading Programming, Concurrency Control, Static Program Analysis, Reverse Engineering, Forensics, Vulnerability Detection**
 {% endnote %}
 
 # Experiences
@@ -108,7 +108,6 @@ comments: false
 # Research
 
 {% note modern %}
-
 ### MalPacDetector: An LLM-based Malicious npm Package Detector
 
 <i class="fa-solid fa-chalkboard-user"></i> **Instructor** : **<a href="http://faculty.hust.edu.cn/lizhen12/en/index.htm" target="_blank">Zhen Li</a>** | **Mar 2023 - Jun 2024**
@@ -122,17 +121,24 @@ comments: false
 
 # Projects
 {% note modern %}
+### Multiplayer Word Guessing Game
+**<i class="fa-solid fa-toolbox"></i></i> Go, React, TypeScript, WebSocket**
+**·** Built a concurrent TCP game server in Go supporting multiple game sessions with fault tolerance for player disconnections, implementing role-based state management and real-time synchronization.
+**·** Designed a responsive React frontend with WebSocket integration, featuring role-specific UI.
+{% endnote %}
+
+{% note modern %}
 ### Netfilter-based Network Sniffer
 **<i class="fa-solid fa-toolbox"></i></i> C, Linux kernel, Netlink**
-**·**Developed a user-defined rules system enabling state analysis and filtering of TCP, UDP, and ICMP protocol messages.
-**·**Implemented NAT functionality for IP and port conversion and used Netfilter to invoke kernel functions for packet.
+**·** Developed a user-defined rules system enabling state analysis and filtering of TCP, UDP, and ICMP protocol messages.
+**·** Implemented NAT functionality for IP and port conversion and used Netfilter to invoke kernel functions for packet.
 {% endnote %}
 
 {% note modern %}
 ### miniVPN: TLS/SSL VPN Implementation
 **<i class="fa-solid fa-toolbox"></i></i> Authentication, TUN/TAP, Qt**
-**·**Designed and integrated four key modules – SSL communication, pipeline communication, TUN communication, and the main scheduling module – to ensure the effective operation of the miniVPN server.
-**·**Utilized public key encryption, PKI, X.509 certificates, and authentication mechanisms to establish secure transmission channels.
+**·** Designed and integrated four key modules – SSL communication, pipeline communication, TUN communication, and the main scheduling module – to ensure the effective operation of the miniVPN server.
+**·** Utilized public key encryption, PKI, X.509 certificates, and authentication mechanisms to establish secure transmission channels.
 {% endnote %}
 
 {% note modern %}
@@ -146,18 +152,18 @@ comments: false
 {% note modern %}
 ### API HOOK-based Software Behavior Analysis System
 **<i class="fa-solid fa-toolbox"></i></i> Windows, Detours, Qt**
-**·**Utilized the Detours library to intercept Win32 functions, enabling Windows API capture and behavior analysis.
-**·**Developed a graphical interface using Qt for feature visualization.
+**·** Utilized the Detours library to intercept Win32 functions, enabling Windows API capture and behavior analysis.
+**·** Developed a graphical interface using Qt for feature visualization.
 
 {% endnote %}
 
 
 
 {% note modern %}
-### Cafeteria Application Simulation of Campus Card} $|$ \emph{C, Data Structures, Algorithms
+### Cafeteria Application Simulation of Campus Card
 **<i class="fa-solid fa-toolbox"></i></i> C, Data Structures, Algorithms**
-**·**Architected a versatile data structure utilizing sequential, hash table, and dynamic linked table storage methods for efficient storage.
-**·**Conducted string similarity calculations and implemented fuzzy search to match for large-scale data.
+**·** Architected a versatile data structure utilizing sequential, hash table, and dynamic linked table storage methods for efficient storage.
+**·** Conducted string similarity calculations and implemented fuzzy search to match for large-scale data.
 {% endnote %}
 
 
