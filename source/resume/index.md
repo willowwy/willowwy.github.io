@@ -6,6 +6,6 @@ comments: false
 
 ## ↓↓↓ Please click to view the resume ↓↓↓
 
-### <i class="fa-solid fa-download"></i> <a href="CV__Wenyun_Wang_Software.pdf" target="_blank">Download CV for Software roles</a>
+### <i class="fa-solid fa-download"></i> <a href="CV__Wenyun_Wang_EN.pdf" target="_blank">Download CV(English Version)</a>
 
-### <i class="fa-solid fa-download"></i> <a href="CV__Wenyun_Wang_Security.pdf" target="_blank">Download CV for Secuity roles</a>
+### <i class="fa-solid fa-download"></i> <a href="CV__Wenyun_Wang_CN.pdf" target="_blank">下载简历（中文版）</a>

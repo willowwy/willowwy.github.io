@@ -2,7 +2,8 @@
 title: picoCTF-Web Exploitation
 date: 2025-03-15 18:59:36
 tags: Web
-categories: [ Security ]
+categories: [Security]
+cover: images/picoctf.png
 ---
 
 ## WebDecode
@@ -118,7 +119,7 @@ for i in range(50):
     if (r.status_code == 200) and ('picoCTF' in r.text):
         match = re.search(r'picoCTF{[^}]*}', r.text)
         if match:
-            print(match.group(0))                                                                                                 
+            print(match.group(0))
 ```
 
 Excute python:
@@ -168,10 +169,10 @@ Need to access the `.htaccess` file
 
 5. The fifth part:
 
-   It leads us to the *.DS_Store* file,
+   It leads us to the _.DS_Store_ file,
 
    > `.DS_Store` is a hidden file automatically created by the macOS operating system. Its main purpose is to store
-   visual information and metadata about folders.
+   > visual information and metadata about folders.
 
 ```
 Part 5: _f7ce8828}
@@ -194,30 +195,28 @@ The password is in the js script in html file.
 Check html file and reorganize the flag: picoCTF{no_clients_plz_b706c5}
 
 ```js
-  function verify() {
-    checkpass = document.getElementById("pass").value;
-    split = 4;
-    if (checkpass.substring(0, split) == 'pico') {
-        if (checkpass.substring(split * 6, split * 7) == '706c') {
-            if (checkpass.substring(split, split * 2) == 'CTF{') {
-                if (checkpass.substring(split * 4, split * 5) == 'ts_p') {
-                    if (checkpass.substring(split * 3, split * 4) == 'lien') {
-                        if (checkpass.substring(split * 5, split * 6) == 'lz_b') {
-                            if (checkpass.substring(split * 2, split * 3) == 'no_c') {
-                                if (checkpass.substring(split * 7, split * 8) == '5}') {
-                                    alert("Password Verified")
-                                }
-                            }
-                        }
-
-                    }
+function verify() {
+  checkpass = document.getElementById("pass").value;
+  split = 4;
+  if (checkpass.substring(0, split) == "pico") {
+    if (checkpass.substring(split * 6, split * 7) == "706c") {
+      if (checkpass.substring(split, split * 2) == "CTF{") {
+        if (checkpass.substring(split * 4, split * 5) == "ts_p") {
+          if (checkpass.substring(split * 3, split * 4) == "lien") {
+            if (checkpass.substring(split * 5, split * 6) == "lz_b") {
+              if (checkpass.substring(split * 2, split * 3) == "no_c") {
+                if (checkpass.substring(split * 7, split * 8) == "5}") {
+                  alert("Password Verified");
                 }
+              }
             }
+          }
         }
-    } else {
-        alert("Incorrect password");
+      }
     }
-
+  } else {
+    alert("Incorrect password");
+  }
 }
 ```
 
@@ -231,7 +230,7 @@ Check the website's cookie. The admin cookies = False.
 
 So we can guess that the secure mode is decided by the user' type.
 
-Modify the admin type into ``` admin=True```, update the website then we can see the flag.
+Modify the admin type into ` admin=True`, update the website then we can see the flag.
 
 <img src="image-20240919160806431.png" alt="image-20240919160806431" style="zoom:33%;" />
 
@@ -243,11 +242,11 @@ Modify the admin type into ``` admin=True```, update the website then we can see
 
 2. Part2: In comment of the ` mycss.css`file.
 
-   /* You need CSS to make pretty pages. Here's part 2/3 of the flag: t3ct1ve_0r_ju5t */
+   /_ You need CSS to make pretty pages. Here's part 2/3 of the flag: t3ct1ve_0r_ju5t _/
 
-3. Part3 : In the comment of  ``` myjs.js```file.
+3. Part3 : In the comment of ` myjs.js`file.
 
-   /* Javascript sure is neat. Anyways part 3/3 of the flag: _lucky?2e7b23e3} */
+   /_ Javascript sure is neat. Anyways part 3/3 of the flag: \_lucky?2e7b23e3} _/
 
 Summary: picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?2e7b23e3}
 
@@ -263,49 +262,4 @@ Check the 1bb.4c.html
 
 <img src="image-20240919161825253.png" alt="image-20240919161825253" style="zoom: 50%;" />
 
-
-
-
-
 ![image-20240919163659616](picoCTF/image-20240919163659616.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

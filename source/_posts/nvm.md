@@ -8,35 +8,45 @@ cover: images/nvm.jpg
 comments: false
 ---
 
-
 ### 创建目录
-``` bash
+
+```bash
 mkdir -p /usr/local/nvm
 ```
+
 ### 下载源码
-``` bash
+
+```bash
 git clone https://github.com/nvm-sh/nvm.git /usr/local/nvm
 ```
+
 ### 切换目录
-``` bash
+
+```bash
 cd /usr/local/nvm
 ```
+
 ### 安装
-``` bash
+
+```bash
 ./install.sh
 ```
+
 ### 添加淘宝镜像
-``` bash
+
+```bash
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist
 ```
 
-### 重启配置文件不会操作也可以重启Linux
-``` bash
+### 重启配置文件不会操作也可以重启 Linux
+
+```bash
 source ~/.bashrc
 #输入到bash xxx的时候需要根据操作系统决定 我用的deepin是.bashrc | Ubuntu应该是bash_profile
 ```
- 
+
 ### 开始安装
-``` bash
+
+```bash
 nvm install stable
 ```
