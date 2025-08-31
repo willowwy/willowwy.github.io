@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Willowwy's Blog
-subtitle: '还没想好要写什么'
+title: Wenyun Wang
+subtitle: ''
 description: ''
 keywords:
-author: Willowwy
-language: zh-CN
+author: Wenyun Wang
+language: default
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://willowwy.me
+url: http://wenyunw.me
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -61,7 +61,7 @@ prismjs:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: '/home/'
   per_page: 10
   order_by: -date
 
@@ -103,6 +103,5 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  #repo: git@github.com:willowwy/willowwy.github.io.git
   repo: https://github.com/willowwy/willowwy.github.io.git
   branch: gh-pages

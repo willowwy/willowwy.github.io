@@ -3,8 +3,8 @@ title: OWASP Top10 API
 date: 2023-07-30 17:32:31
 cover: images/owasp.jpg
 description: 2023 api安全风险 OWASP-TOP10分析
-tags: [api安全]
-categories: [安全]
+tags: [API Security]
+categories: [Security]
 comments: false
 ---
 ![owasp](api安全/owasp-10.jpg)

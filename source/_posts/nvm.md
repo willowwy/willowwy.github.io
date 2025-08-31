@@ -2,7 +2,7 @@
 title: nvm
 date: 2023-07-31 17:32:31
 tags: [nvm]
-categories: [tool]
+categories: [Tools]
 description: nvm 安装
 cover: images/nvm.jpg
 comments: false
