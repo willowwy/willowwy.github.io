@@ -1,7 +1,7 @@
 ---
 title: "LLM Agent Planning Design: From Theory to Reverse Engineering Practice"
 date: 2025-08-31 14:30:00
-tags: [LLM, Agent, Planning, Reverse Engineering, Binary Analysis]
+tags: [LLM Agent, Binary Analysis]
 categories: [Security]
 description: "Comprehensive analysis of LLM agent planning methodologies and their application in reverse engineering, based on research and practical implementation at Meituan"
 comments: false

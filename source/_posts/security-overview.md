@@ -1,16 +1,7 @@
 ---
 title: "Cybersecurity Knowledge Mind Map"
 date: 2025-08-31 15:25:09
-tags:
-  [
-    Cybersecurity,
-    Web Security,
-    Blockchain,
-    Cryptography,
-    Software Security,
-    Network Security,
-    Learning Notes,
-  ]
+tags: [Blockchain, Cryptography, Security, Learning Notes]
 categories: [Security]
 description: "A comprehensive mind map documenting fundamental cybersecurity concepts from web vulnerabilities to blockchain security, created during my graduate studies at Carnegie Mellon University"
 comments: false
