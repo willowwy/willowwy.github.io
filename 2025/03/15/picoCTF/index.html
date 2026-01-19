@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="default" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>picoCTF-Web Exploitation | Wenyun Wang</title><meta name="author" content="Wenyun Wang"><meta name="copyright" content="Wenyun Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="WebDecodeshortcut in MacOS option+command+i to open web broswer   The flag is in base64, open the tool to transfer code into ascii. UnminifyBy looking at the page source it is all on one line. 1curl -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="picoCTF-Web Exploitation">
+<meta property="og:url" content="http://wenyunw.me/2025/03/15/picoCTF/index.html">
+<meta property="og:site_name" content="Wenyun Wang">
+<meta property="og:description" content="WebDecodeshortcut in MacOS option+command+i to open web broswer   The flag is in base64, open the tool to transfer code into ascii. UnminifyBy looking at the page source it is all on one line. 1curl -">
+<meta property="og:locale">
+<meta property="og:image" content="http://wenyunw.me/images/picoctf.png">
+<meta property="article:published_time" content="2025-03-15T10:59:36.000Z">
+<meta property="article:modified_time" content="2025-08-31T22:49:33.951Z">
+<meta property="article:author" content="Wenyun Wang">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wenyunw.me/images/picoctf.png"><link rel="shortcut icon" href="/images/favicon.png"><link rel="canonical" href="http://wenyunw.me/2025/03/15/picoCTF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"Author: Wenyun Wang","link":"Link: ","source":"Source: Wenyun Wang","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'picoCTF-Web Exploitation',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-01 06:49:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#F8F8FF')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Wenyun Wang"><span class="site-name">Wenyun Wang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">picoCTF-Web Exploitation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">Updated</span><time datetime="2025-08-31T22:49:33.951Z" title="Updated 2025-09-01 06:49:33">2025-09-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="picoCTF-Web Exploitation"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="WebDecode"><a href="#WebDecode" class="headerlink" title="WebDecode"></a>WebDecode</h2><p>shortcut in MacOS option+command+i to open web broswer</p>
+<img src="image-20240918162453634.png" alt="image-20240918162453634" style="zoom: 25%;" />
+
+<p>The flag is in base64, open the tool to transfer code into ascii.</p>
+<h2 id="Unminify"><a href="#Unminify" class="headerlink" title="Unminify"></a>Unminify</h2><p>By looking at the page source it is all on one line.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://titan.picoctf.net:54349/ | grep -oE picoCTF&#123;.*&#125; --color=none | cut -d &quot;\&quot;&quot; -f1</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>curl -s http://titan.picoctf.net:54349/</code></strong>:</p>
+<ul>
+<li><strong><code>curl</code></strong>: This is a command-line tool used to transfer data from or to a server using various protocols (HTTP,<br>HTTPS, etc.).</li>
+<li><strong><code>-s</code></strong>: This flag stands for “silent” mode, which means it won’t show progress or error messages. It only outputs<br>the content of the URL.</li>
+<li><strong><code>http://titan.picoctf.net:54349/</code></strong>: This is the URL being accessed. The command will fetch the content from this<br>address.</li>
+</ul>
+<p><strong><code>|</code></strong>:</p>
+<ul>
+<li>This is a pipe, which takes the output of the command on the left (<code>curl</code>) and uses it as the input for the command on<br>the right (<code>grep</code>).</li>
+</ul>
+<p><strong><code>grep -oE picoCTF&#123;.\*&#125; --color=none</code></strong>:</p>
+<ul>
+<li><strong><code>grep</code></strong>: A command-line utility for searching plain-text data for lines that match a regular expression.</li>
+<li><strong><code>-o</code></strong>: This option tells <code>grep</code> to only output the matching part of the line, rather than the entire line.</li>
+<li><strong><code>-E</code></strong>: This enables extended regular expressions, allowing more complex patterns.</li>
+<li><strong><code>picoCTF&#123;.\*&#125;</code></strong>: This is the regular expression pattern being searched for. It looks for strings that start with<br><code>picoCTF&#123;</code> and contain any characters (<code>.*</code>) until the closing brace.</li>
+<li><strong><code>--color=none</code></strong>: This option disables color highlighting in the output.</li>
+</ul>
+<p><strong><code>| cut -d &quot;\&quot;&quot; -f1</code></strong>:</p>
+<ul>
+<li><strong><code>cut</code></strong>: This command is used to remove sections from each line of input.</li>
+<li><strong><code>-d &quot;\&quot;&quot; </code></strong>: This specifies the delimiter to be a double quote (<code>&quot;</code>). <code>cut</code> will use this character to split the<br>input.</li>
+<li><strong><code>-f1</code></strong>: This option tells <code>cut</code> to output only the first field (the part before the first double quote).</li>
+</ul>
+<h2 id="IntroToBurp"><a href="#IntroToBurp" class="headerlink" title="IntroToBurp"></a>IntroToBurp</h2><p>Open the burpsuite and open the Intercept when on the validation of OTP</p>
+<p>delete the request on the line” otp&#x3D; “.</p>
+<p>DO NOT delete any space or blank!! Maybe because the server will excute the format check.</p>
+<img src="/2025/03/15/picoCTF/image-20240918170459860.png" class="" title="image-20240918170459860">
+
+<h2 id="Bookmarklet"><a href="#Bookmarklet" class="headerlink" title="Bookmarklet"></a>Bookmarklet</h2><p>Method 1: Run the javascript code online.</p>
+<img src="/2025/03/15/picoCTF/image-20240918170909549.png" class="" title="image-20240918170909549">
+
+<p>Method2: create a bookmark and enter the js code as the url. Then open it in a new window. The flag will pop out.</p>
+<img src="/2025/03/15/picoCTF/image-20240918171515161.png" class="" title="image-20240918171515161">
+
+<p>So the broswer will take it as js code and calculate the value of url will automatically.</p>
+<h2 id="Local-Authority"><a href="#Local-Authority" class="headerlink" title="Local Authority"></a>Local Authority</h2><p>Check the secure.js through the web inspector.</p>
+<img src="/2025/03/15/picoCTF/image-20240918172745363.png" class="" title="image-20240918172745363">
+
+<h2 id="Inspect-HTML"><a href="#Inspect-HTML" class="headerlink" title="Inspect HTML"></a>Inspect HTML</h2><p>Check the web inspector and search for picoCTF</p>
+<img src="/2025/03/15/picoCTF/image-20240918173056683.png" class="" title="image-20240918173056683">
+
+<h2 id="Includes"><a href="#Includes" class="headerlink" title="Includes"></a>Includes</h2><p>Inspect of files from “say hello”.</p>
+<p>The first part of flag is in the comment of style.css. The rest of flag is in the script.js.</p>
+<img src="image-20240918173710911.png" alt="image-20240918173710911" style="zoom: 50%;" />
+
+<img src="image-20240918173821281.png" alt="image-20240918173821281" style="zoom:50%;" />
+
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>The cookies seems like a random integer.</p>
+<p>If i put in “wwy”, it will return name&#x3D;-1. If I put in the suggested string “snickerdoodle”, it will return name&#x3D;0.</p>
+<img src="image-20240918174038083.png" alt="image-20240918174038083" style="zoom: 50%;" />
+
+<p>To try the correct number of name:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">50</span>):</span><br><span class="line">    cookie = <span class="string">&#x27;name=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(i)</span><br><span class="line">    headers = &#123;<span class="string">&#x27;Cookie&#x27;</span>: cookie&#125;</span><br><span class="line"></span><br><span class="line">    r = requests.get(<span class="string">&#x27;http://mercury.picoctf.net:27177/check&#x27;</span>, headers=headers)</span><br><span class="line">    <span class="keyword">if</span> (r.status_code == <span class="number">200</span>) <span class="keyword">and</span> (<span class="string">&#x27;picoCTF&#x27;</span> <span class="keyword">in</span> r.text):</span><br><span class="line">        <span class="keyword">match</span> = re.search(<span class="string">r&#x27;picoCTF&#123;[^&#125;]*&#125;&#x27;</span>, r.text)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="keyword">match</span>.group(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<p>Excute python:</p>
+<img src="image-20240918180742738.png" alt="image-20240918180742738" style="zoom:50%;" />
+
+<h2 id="Scavenger-Hunt"><a href="#Scavenger-Hunt" class="headerlink" title="Scavenger Hunt"></a>Scavenger Hunt</h2><p>According to the hint, check the inspector for js,css and html.</p>
+<ol>
+<li>The first part is in the html file:</li>
+</ol>
+<!-- Here's the first part of the flag: picoCTF{t -->
+
+<img src="image-20240918181425111.png" alt="image-20240918181425111" style="zoom:50%;" />
+
+<ol start="2">
+<li>The second part is in the css file:</li>
+</ol>
+<p>h4ts_4_l0</p>
+<img src="/2025/03/15/picoCTF/image-20240918181246993.png" class="" title="image-20240918181246993">
+
+<ol start="3">
+<li>The third part in the JS file:</li>
+</ol>
+<p>Devs don’t want these spiders to reach and <code>index</code> every part of the website, we use a special file called <code>robots.txt</code></p>
+<p>Search URL :<a target="_blank" rel="noopener" href="http://mercury.picoctf.net:39491/robots.txt">http://mercury.picoctf.net:39491/robots.txt</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Part 3: t_0f_pl4c</span><br></pre></td></tr></table></figure>
+
+<img src="image-20240918182754039.png" alt="image-20240918182754039" style="zoom:50%;" />
+
+<ol start="4">
+<li>The fourth part:</li>
+</ol>
+<p>Need to access the <code>.htaccess</code> file</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Part 4: 3s_2_lO0k</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The <code>.htaccess</code> file is a configuration file used by the Apache web server. It allows web administrators to define<br>server configuration options for specific directories without modifying the main server configuration files.</p>
+</blockquote>
+<img src="image-20240918183206513.png" alt="image-20240918183206513" style="zoom:50%;" />
+
+<ol start="5">
+<li><p>The fifth part:</p>
+<p>It leads us to the <em>.DS_Store</em> file,</p>
+<blockquote>
+<p><code>.DS_Store</code> is a hidden file automatically created by the macOS operating system. Its main purpose is to store<br>visual information and metadata about folders.</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Part 5: _f7ce8828&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2025/03/15/picoCTF/image-20240918183350508.png" class="" title="image-20240918183350508">
+
+<p>summary flag: picoCTF{th4ts_4_l0t_0f_pl4c3s_2_lO0k_f7ce8828}</p>
+<h2 id="GET-aHEAD"><a href="#GET-aHEAD" class="headerlink" title="GET aHEAD"></a>GET aHEAD</h2><p>Use burpsuite to Modify the GET request into HEAD request, the server will return the flag value.</p>
+<img src="/2025/03/15/picoCTF/image-20240919154502652.png" class="" title="image-20240919154502652">
+
+<h2 id="dont-use-client-side"><a href="#dont-use-client-side" class="headerlink" title="dont-use-client-side"></a>dont-use-client-side</h2><p>The password is in the js script in html file.</p>
+<p>Check html file and reorganize the flag: picoCTF{no_clients_plz_b706c5}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">verify</span>(<span class="params"></span>) &#123;</span><br><span class="line">  checkpass = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;pass&quot;</span>).<span class="property">value</span>;</span><br><span class="line">  split = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(<span class="number">0</span>, split) == <span class="string">&quot;pico&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">6</span>, split * <span class="number">7</span>) == <span class="string">&quot;706c&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split, split * <span class="number">2</span>) == <span class="string">&quot;CTF&#123;&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">4</span>, split * <span class="number">5</span>) == <span class="string">&quot;ts_p&quot;</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">3</span>, split * <span class="number">4</span>) == <span class="string">&quot;lien&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">5</span>, split * <span class="number">6</span>) == <span class="string">&quot;lz_b&quot;</span>) &#123;</span><br><span class="line">              <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">2</span>, split * <span class="number">3</span>) == <span class="string">&quot;no_c&quot;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (checkpass.<span class="title function_">substring</span>(split * <span class="number">7</span>, split * <span class="number">8</span>) == <span class="string">&quot;5&#125;&quot;</span>) &#123;</span><br><span class="line">                  <span class="title function_">alert</span>(<span class="string">&quot;Password Verified&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;Incorrect password&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="logon"><a href="#logon" class="headerlink" title="logon"></a>logon</h2><p>Use a random user name and password, we can find that it can login in successfully.</p>
+<p>Check the website’s cookie. The admin cookies &#x3D; False.</p>
+<img src="image-20240919161105543.png" alt="image-20240919161105543" style="zoom:33%;" />
+
+<p>So we can guess that the secure mode is decided by the user’ type.</p>
+<p>Modify the admin type into <code> admin=True</code>, update the website then we can see the flag.</p>
+<img src="image-20240919160806431.png" alt="image-20240919160806431" style="zoom:33%;" />
+
+<h2 id="Insp3ct0r"><a href="#Insp3ct0r" class="headerlink" title="Insp3ct0r"></a>Insp3ct0r</h2><ol>
+<li>Part1: In the html file</li>
+</ol>
+<!-- Html is neat. Anyways have 1/3 of the flag: picoCTF{tru3_d3 -->
+
+<ol start="2">
+<li><p>Part2: In comment of the <code> mycss.css</code>file.</p>
+<p>&#x2F;_ You need CSS to make pretty pages. Here’s part 2&#x2F;3 of the flag: t3ct1ve_0r_ju5t _&#x2F;</p>
+</li>
+<li><p>Part3 : In the comment of <code> myjs.js</code>file.</p>
+<p>&#x2F;_ Javascript sure is neat. Anyways part 3&#x2F;3 of the flag: _lucky?2e7b23e3} _&#x2F;</p>
+</li>
+</ol>
+<p>Summary: picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?2e7b23e3}</p>
+<p>This is easier than Scavenger Hunt!!! I’m confused about the order of these questions…</p>
+<h2 id="where-are-the-robots"><a href="#where-are-the-robots" class="headerlink" title="where are the robots"></a>where are the robots</h2><p>According to the hints, find what is in the <code>robots.txt</code> file?</p>
+<img src="/2025/03/15/picoCTF/image-20240919161803636.png" class="" title="image-20240919161803636">
+
+<p>Check the 1bb.4c.html</p>
+<img src="image-20240919161825253.png" alt="image-20240919161825253" style="zoom: 50%;" />
+
+<img src="/2025/03/15/picoCTF/image-20240919163659616.png" class="" title="image-20240919163659616">
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wenyunw.me">Wenyun Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wenyunw.me/2025/03/15/picoCTF/">http://wenyunw.me/2025/03/15/picoCTF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a></div><div class="post_share"><div class="social-share" data-image="/images/picoctf.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/15/padding-oracle-attack/" title="padding_oracle_attack"><img class="cover" src="/images/padding_oracle_attack.png" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">padding_oracle_attack</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/24/Listening/" title="Listening"><img class="cover" src="/images/toefl.jpg" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Listening</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wenyun Wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/willowwy" target="_blank" title="Github"><i class="fab fa-github" style="color: #1e3050;"></i></a><a class="social-icon" href="mailto:wenyunw@andrew.cmu.edu" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.google.com/maps/place/The+Information+Networking+Institute/@40.4460669,-79.9486752,19z/data=!3m1!4b1!4m6!3m5!1s0x8834f2246db2baff:0x85b7d021fa341b37!8m2!3d40.4460659!4d-79.9480315!16s%2Fm%2F03nrl47?entry=ttu&amp;g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Location"><i class="fas fa-location-arrow" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.linkedin.com/in/wenyunw/" target="_blank" title="Linkedin"><i class="fab fa-linkedin" style="color: #1e3050;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">I'm seeking an full-time now.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WebDecode"><span class="toc-number">1.</span> <span class="toc-text">WebDecode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unminify"><span class="toc-number">2.</span> <span class="toc-text">Unminify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IntroToBurp"><span class="toc-number">3.</span> <span class="toc-text">IntroToBurp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bookmarklet"><span class="toc-number">4.</span> <span class="toc-text">Bookmarklet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Local-Authority"><span class="toc-number">5.</span> <span class="toc-text">Local Authority</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inspect-HTML"><span class="toc-number">6.</span> <span class="toc-text">Inspect HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Includes"><span class="toc-number">7.</span> <span class="toc-text">Includes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookies"><span class="toc-number">8.</span> <span class="toc-text">Cookies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scavenger-Hunt"><span class="toc-number">9.</span> <span class="toc-text">Scavenger Hunt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET-aHEAD"><span class="toc-number">10.</span> <span class="toc-text">GET aHEAD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dont-use-client-side"><span class="toc-number">11.</span> <span class="toc-text">dont-use-client-side</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logon"><span class="toc-number">12.</span> <span class="toc-text">logon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insp3ct0r"><span class="toc-number">13.</span> <span class="toc-text">Insp3ct0r</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#where-are-the-robots"><span class="toc-number">14.</span> <span class="toc-text">where are the robots</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Wenyun Wang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'comment.wenyunw.me',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'object') initWaline()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2/dist/waline.css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client@2/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="default" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>switch | Wenyun Wang</title><meta name="author" content="Wenyun Wang"><meta name="copyright" content="Wenyun Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="eNSP Switch 简单配置与操作 configuration">
+<meta property="og:type" content="article">
+<meta property="og:title" content="switch">
+<meta property="og:url" content="http://wenyunw.me/2023/08/03/switch/index.html">
+<meta property="og:site_name" content="Wenyun Wang">
+<meta property="og:description" content="eNSP Switch 简单配置与操作 configuration">
+<meta property="og:locale">
+<meta property="og:image" content="http://wenyunw.me/images/switch.png">
+<meta property="article:published_time" content="2023-08-03T01:46:23.000Z">
+<meta property="article:modified_time" content="2025-02-18T23:01:19.918Z">
+<meta property="article:author" content="Wenyun Wang">
+<meta property="article:tag" content="switch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wenyunw.me/images/switch.png"><link rel="shortcut icon" href="/images/favicon.png"><link rel="canonical" href="http://wenyunw.me/2023/08/03/switch/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"Author: Wenyun Wang","link":"Link: ","source":"Source: Wenyun Wang","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'switch',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-19 07:01:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#F8F8FF')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Wenyun Wang"><span class="site-name">Wenyun Wang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">switch</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">Updated</span><time datetime="2025-02-18T23:01:19.918Z" title="Updated 2025-02-19 07:01:19">2025-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Switch/">Switch</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="switch"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="一、连接（SecureCRT为例）："><a href="#一、连接（SecureCRT为例）：" class="headerlink" title="一、连接（SecureCRT为例）："></a>一、连接（SecureCRT为例）：</h2><h3 id="1-查看端口"><a href="#1-查看端口" class="headerlink" title="1.查看端口"></a>1.查看端口</h3><pre><code>我的电脑-右键管理-设备管理器
+</code></pre>
+<img src="/2023/08/03/switch/device.png" class="" title="设备">
+<h3 id="2-远程工具建立连接"><a href="#2-远程工具建立连接" class="headerlink" title="2.	远程工具建立连接"></a>2.	远程工具建立连接</h3><pre><code>协议——serial
+配置如下：
+</code></pre>
+<img src="/2023/08/03/switch/setting.png" class="" title="pic">
+<h3 id="3-重置（选）"><a href="#3-重置（选）" class="headerlink" title="3.	重置（选）"></a>3.	重置（选）</h3><pre><code>reset saved-configuration → ‘y’
+reboot → ‘n’→ ‘y’
+</code></pre>
+<h3 id="4-配置模式"><a href="#4-配置模式" class="headerlink" title="4.	配置模式"></a>4.	配置模式</h3><pre><code>sys
+//进入配置模式
+</code></pre>
+<img src="/2023/08/03/switch/sys.png" class="" title="sys">
+<pre><code>dis cur
+//display current 查看目前配置
+
+q
+//退出当前模式
+</code></pre>
+<hr>
+<h2 id="二、分组操作："><a href="#二、分组操作：" class="headerlink" title="二、分组操作："></a>二、分组操作：</h2><h3 id="将交换机上的不同端口分为不同的虚拟组别，方便进行批量操作。"><a href="#将交换机上的不同端口分为不同的虚拟组别，方便进行批量操作。" class="headerlink" title="将交换机上的不同端口分为不同的虚拟组别，方便进行批量操作。"></a>将交换机上的不同端口分为不同的虚拟组别，方便进行批量操作。</h3><h3 id="创建-进入组："><a href="#创建-进入组：" class="headerlink" title="创建&#x2F;进入组："></a>创建&#x2F;进入组：</h3><pre><code>port-group 1
+//进入或创建组1，数字可以自定义
+
+group-member gigabitethernet 0/0/1 to gigabitethernet 0/0/8
+//将1-8端口打包为 “组1”
+</code></pre>
+<hr>
+<h2 id="三、设置端口类型："><a href="#三、设置端口类型：" class="headerlink" title="三、设置端口类型："></a>三、设置端口类型：</h2><h3 id="三种端口区别："><a href="#三种端口区别：" class="headerlink" title="三种端口区别："></a>三种端口区别：</h3><pre><code>https://blog.csdn.net/mansky0618/article/details/100033123?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-100033123-blog-122424064.pc_relevant_aa&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-100033123-blog-122424064.pc_relevant_aa&amp;utm_relevant_index=1
+</code></pre>
+<h3 id="进入端口："><a href="#进入端口：" class="headerlink" title="进入端口："></a>进入端口：</h3><pre><code>port-group 1			
+//进入分组 “1”，即批量操作端口1-8
+
+interface gigabitethernet 0/0/6   
+//进入端口6
+</code></pre>
+<h3 id="设置端口类型："><a href="#设置端口类型：" class="headerlink" title="设置端口类型："></a>设置端口类型：</h3><pre><code>port link-type access
+//设置为access端口
+
+port link-type trunk
+//设置为trunk端口
+</code></pre>
+<h3 id="三种端口类型转换："><a href="#三种端口类型转换：" class="headerlink" title="三种端口类型转换："></a>三种端口类型转换：</h3><pre><code>https://forum.huawei.com/enterprise/zh/thread-801465.html
+</code></pre>
+<hr>
+<h2 id="四、Vlan设置："><a href="#四、Vlan设置：" class="headerlink" title="四、Vlan设置："></a>四、Vlan设置：</h2><h3 id="Access：一个端口对应一个网段"><a href="#Access：一个端口对应一个网段" class="headerlink" title="Access：一个端口对应一个网段"></a>Access：一个端口对应一个网段</h3><h3 id="Trunk-一个端口可以对应多个网段"><a href="#Trunk-一个端口可以对应多个网段" class="headerlink" title="Trunk:一个端口可以对应多个网段"></a>Trunk:一个端口可以对应多个网段</h3><h3 id="进入网络段设置："><a href="#进入网络段设置：" class="headerlink" title="进入网络段设置："></a>进入网络段设置：</h3><pre><code>interface Vlanif33
+//进入33的vlan设置
+</code></pre>
+<h3 id="设置IP："><a href="#设置IP：" class="headerlink" title="设置IP："></a>设置IP：</h3><pre><code>ip address 10.128.19.33 255.255.255.0
+//配置名称为33的vlan IP与掩码
+//定义WEB访问地址
+</code></pre>
+<hr>
+<h2 id="五、路由功能："><a href="#五、路由功能：" class="headerlink" title="五、路由功能："></a>五、路由功能：</h2><h3 id="添加路由功能："><a href="#添加路由功能：" class="headerlink" title="添加路由功能："></a>添加路由功能：</h3><pre><code>ip route-static 10.128.0.0 255.255.255.0 10.129.85.254
+//设置路由IP、掩码、网关
+</code></pre>
+<hr>
+<h2 id="六、增添用户"><a href="#六、增添用户" class="headerlink" title="六、增添用户"></a>六、增添用户</h2><h3 id="进入用户设置模式："><a href="#进入用户设置模式：" class="headerlink" title="进入用户设置模式："></a>进入用户设置模式：</h3><pre><code>aaa
+//默认
+</code></pre>
+<h3 id="用户密码："><a href="#用户密码：" class="headerlink" title="用户密码："></a>用户密码：</h3><pre><code>local-user wwy password cipher 531
+//设置用户名为wwy的密码为531
+//密文储存
+</code></pre>
+<h3 id="增添服务权限："><a href="#增添服务权限：" class="headerlink" title="增添服务权限："></a>增添服务权限：</h3><pre><code>local-user wwy service-type http ssh telnet web
+//用户wwy可以使用此四种服务进行验证
+</code></pre>
+<h3 id="命令级别："><a href="#命令级别：" class="headerlink" title="命令级别："></a>命令级别：</h3><pre><code>local-user wwy level 10
+//赋予wwy 10级的用户权限
+</code></pre>
+<hr>
+<h2 id="PS："><a href="#PS：" class="headerlink" title="PS："></a>PS：</h2><h3 id="开启http服务"><a href="#开启http服务" class="headerlink" title="开启http服务"></a>开启http服务</h3><pre><code>dir
+//查看zip文件
+http server load xxx.zip
+http server enable
+</code></pre>
+<img src="/2023/08/03/switch/http.png" class="" title="http"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wenyunw.me">Wenyun Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wenyunw.me/2023/08/03/switch/">http://wenyunw.me/2023/08/03/switch/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/switch/">switch</a></div><div class="post_share"><div class="social-share" data-image="/images/switch.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/22/Speaking/" title="Speaking"><img class="cover" src="/images/toefl.jpg" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Speaking</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/31/nvm/" title="nvm"><img class="cover" src="/images/nvm.jpg" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">nvm</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wenyun Wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/willowwy" target="_blank" title="Github"><i class="fab fa-github" style="color: #1e3050;"></i></a><a class="social-icon" href="mailto:wenyunw@andrew.cmu.edu" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.google.com/maps/place/The+Information+Networking+Institute/@40.4460669,-79.9486752,19z/data=!3m1!4b1!4m6!3m5!1s0x8834f2246db2baff:0x85b7d021fa341b37!8m2!3d40.4460659!4d-79.9480315!16s%2Fm%2F03nrl47?entry=ttu&amp;g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Location"><i class="fas fa-location-arrow" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.linkedin.com/in/wenyunw/" target="_blank" title="Linkedin"><i class="fab fa-linkedin" style="color: #1e3050;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">I'm seeking an full-time now.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%9E%E6%8E%A5%EF%BC%88SecureCRT%E4%B8%BA%E4%BE%8B%EF%BC%89%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一、连接（SecureCRT为例）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">1.查看端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9C%E7%A8%8B%E5%B7%A5%E5%85%B7%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">2.	远程工具建立连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%87%8D%E7%BD%AE%EF%BC%88%E9%80%89%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3.	重置（选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">4.	配置模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%BB%84%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">二、分组操作：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%B8%8A%E7%9A%84%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E5%88%86%E4%B8%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E8%99%9A%E6%8B%9F%E7%BB%84%E5%88%AB%EF%BC%8C%E6%96%B9%E4%BE%BF%E8%BF%9B%E8%A1%8C%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C%E3%80%82"><span class="toc-number">2.1.</span> <span class="toc-text">将交换机上的不同端口分为不同的虚拟组别，方便进行批量操作。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-%E8%BF%9B%E5%85%A5%E7%BB%84%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">创建&#x2F;进入组：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AE%BE%E7%BD%AE%E7%AB%AF%E5%8F%A3%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三、设置端口类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E7%AB%AF%E5%8F%A3%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">三种端口区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E7%AB%AF%E5%8F%A3%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">进入端口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%AB%AF%E5%8F%A3%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">3.3.</span> <span class="toc-text">设置端口类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E7%AB%AF%E5%8F%A3%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-number">3.4.</span> <span class="toc-text">三种端口类型转换：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Vlan%E8%AE%BE%E7%BD%AE%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">四、Vlan设置：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Access%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AB%AF%E5%8F%A3%E5%AF%B9%E5%BA%94%E4%B8%80%E4%B8%AA%E7%BD%91%E6%AE%B5"><span class="toc-number">4.1.</span> <span class="toc-text">Access：一个端口对应一个网段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trunk-%E4%B8%80%E4%B8%AA%E7%AB%AF%E5%8F%A3%E5%8F%AF%E4%BB%A5%E5%AF%B9%E5%BA%94%E5%A4%9A%E4%B8%AA%E7%BD%91%E6%AE%B5"><span class="toc-number">4.2.</span> <span class="toc-text">Trunk:一个端口可以对应多个网段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E7%BD%91%E7%BB%9C%E6%AE%B5%E8%AE%BE%E7%BD%AE%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">进入网络段设置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEIP%EF%BC%9A"><span class="toc-number">4.4.</span> <span class="toc-text">设置IP：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">五、路由功能：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">添加路由功能：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%A2%9E%E6%B7%BB%E7%94%A8%E6%88%B7"><span class="toc-number">6.</span> <span class="toc-text">六、增添用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">进入用户设置模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">用户密码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E6%B7%BB%E6%9C%8D%E5%8A%A1%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">增添服务权限：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E7%BA%A7%E5%88%AB%EF%BC%9A"><span class="toc-number">6.4.</span> <span class="toc-text">命令级别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PS%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">PS：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AFhttp%E6%9C%8D%E5%8A%A1"><span class="toc-number">7.1.</span> <span class="toc-text">开启http服务</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Wenyun Wang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

